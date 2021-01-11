@@ -23,6 +23,6 @@ else:
     print(day, "요일의 정보를 찾을 수 없습니다.")"""
 
 if day_of_week in dic2:
-    print(day_of_week, "요일의 최저기온는 ", dic[day_of_week][1], "이고 최고기온는", dic[day_of_week][0], "입니다.")
+    print(day_of_week, "요일의 최저기온는 ", dic2[day_of_week][1], "이고 최고기온는", dic2[day_of_week][0], "입니다.")
 else:
     print(day_of_week, "요일의 정보를 찾을 수 없습니다.")
