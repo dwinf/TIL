@@ -1,0 +1,37 @@
+[실습1]
+>>> v1 =100
+>>> v2=50
+>>> r1=v1+v2
+>>> r2=v1-v2
+>>> r3=v1*v2
+>>> r4=v1/v2
+>>> print("r1 = " + str(r1))
+r1 = 150
+>>> print("r2 = " + str(r2))
+r2 = 50
+>>> print("r3 = " + str(r3))
+r3 = 5000
+>>> print("r4 = " + str(r4))
+r4 = 2.0
+
+
+[실습2]
+>>> name1='김'
+>>> name2='대'
+>>> name3='찬'
+>>> print(name1, name2, name3, sep='')
+김대찬
+>>> print(name1, name2, name3, sep='@')
+김@대@찬
+>>> print(name1, name2, name3, sep='---')
+김---대---찬
+
+
+[실습3]
+>>> a=10
+>>> b=25
+>>> c=34
+>>> sum = a+b+c
+>>> avg=sum/3
+>>> print("합은 " + str(sum) + " 이고 평균은 " + str(avg) + " 입니다.")
+합은 69 이고 평균은 23.0 입니다.
