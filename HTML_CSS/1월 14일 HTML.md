@@ -69,7 +69,7 @@ HTML : 네이버, 구글 등 웹페이드를 만드는데 대표적으로 쓰이
   - https는 보안의 차이
 
   - https://www.google.com/search?q=%EC%9D%BC%EA%B8%B0+%EC%98%88%EB%B3%B4&oq=%EC%9D%BC%EA%B8%B0+%EC%98%88%EB%B3%B4&aqs=chrome..69i57j0l7.10632j1j7&sourceid=chrome&ie=UTF-8
-  - search 이후부터는 sql문
+  - search 이후부터는 query 문자열이라고 한다.
 
 - url 작성시 포트번호가 80이면 생략 가능
 
