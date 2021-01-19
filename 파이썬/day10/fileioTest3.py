@@ -6,7 +6,7 @@ while True:
 f.close()
 print("\n" + "-" * 20)
 
-f = open("live.txt", "rt", encoding="UTF-8")
+f = open("yesterday.txt", "rt", encoding="UTF-8")
 text = ""
 line = 1
 while True:
