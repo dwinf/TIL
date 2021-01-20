@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 맛보기</title>
+</head>
+<body>
+    <h1>자바스크립트 코드 실행</h1>
+    <hr>
+    <button>클릭하세요</button>
+    <button><img src="../images/kakao/g7.png" width="100"></button>
+    <script>
+        var doms = document.getElementsByTagName("button");
+        console.log(doms[0]);
+        console.log(doms[1]);
+        doms[0].onclick = function () {
+            window.alert("텍스트 버튼이 클릭되었어요!");
+        };
+        doms[1].onclick = function () {
+            window.alert("이미지 버튼이 클릭되었어요!");
+        };
+    </script>
+</body>
+</html>

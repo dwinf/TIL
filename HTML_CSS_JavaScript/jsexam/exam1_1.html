@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>자바스크립트 맛보기-2</h1>
+<hr>
+<button onmouseover="window.alert('클릭하셨군요!!')">클릭해보세요</button>
+<hr>
+<button onclick="displayDate('red')">빨강</button>
+<button onclick="displayDate('blue')">파랑</button>
+<button onclick="displayDate('yellow')">노랑</button>
+<hr>
+<output id="target"></output>
+<script>
+    function displayDate(colorname) {
+        var now = new Date();
+        var strnow = now.getFullYear()+"년 " + (now.getMonth()+1)+"월 " + now.getDate()+"일";
+        var targetDom = document.getElementById("target");
+        console.log(targetDom);
+        targetDom.textContent = strnow;
+        targetDom.style.color = colorname;
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
