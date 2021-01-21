@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>introduce</title>
+    <style>
+        header {
+            height : 150px;
+            text-align : center;
+            background-image : linear-gradient(to right bottom, yellow, hotpink);
+        }
+        h1 {
+            color : purple;
+            font-size : 40px;
+		    text-shadow : 3px 3px 3px white;
+        }
+        a {
+            text-decoration : none;
+            margin : 70px;
+        }
+        article {
+        	border : 2px solid magenta;
+        	margin : 10px;
+            border-radius : 20px;
+            padding : 15px;
+        }
+        table, th, td {
+		    border : 1px solid green;
+		    border-collapse : collapse;
+	    }
+        th {
+		    background-color : lime;
+	    }
+        section{
+            width : 35%;
+            margin : 10px auto;
+        }
+        figure {
+            text-align : center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>HTML5 학습</h1>
+    <nav>
+        <a href="https://www.w3.org">W3C</a>
+        <a href="http://www.w3schools.com">W3SCHOOL</a>
+        <a href="https://www.jquery.com/">JQuery</a>
+    </nav>
+</header>
+<section>
+    <article>
+        <h2 style="color : hotpink">나의 소개</h2>
+        <ul>
+            <li>이름 : 김대찬</li>
+            <li>취미 : 영화, 산책</li>
+            <li>관심기술 : Java</li>
+        </ul>
+    </article>
+    <article>
+        <h3 style="color : green">재미있게 읽은 책</h3>
+        <table border="1">
+            <tr><th>제목</th><th>장르</th></tr>
+            <tr><td>해리포터</td><td>판타지</td></tr>
+            <tr><td>다빈치 코드</td><td>추리</td></tr>
+            <tr><td>예언</td><td>소설</td></tr>
+            <tr><td>현명한 투자자</td><td>투자</td></tr>
+        </table>
+    </article>
+    <article>
+        <h3 style="color : blue">자랑하고 싶은 <span style="color : purple">우리동네</span>의 아름다운 곳</h3>
+        <h4>수리산역 근처에 위치한 철쭉공원으로 매년 4월 철쭉이 만개했을 때 아름다운 풍경을 볼 수 있다.</h4>
+        <figure>
+            <img src="http://localhost:8000/edu/images/gunpo.png" width="500">
+            <figcaption>4월의 철쭉동산</figcaption>
+        </figure>
+    </article>
+</section>
+<aside>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/_NV0aTp2b4Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+</aside>
+<footer>
+    <em>이 문서는 김 대찬에 의해 HTML5와 CSS3 기술을 사용하여 2020년 1월 14일에 작성하였습니다.(ver 1.0)</em>
+</footer>
+</body>
+</html>
