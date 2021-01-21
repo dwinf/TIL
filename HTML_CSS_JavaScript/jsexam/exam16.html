@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수의 아규먼트 처리</h1>
+<hr>
+<script>
+function pr(p) {
+	document.write(typeof p + " : " + p + "<br>");	
+}
+pr(100);
+pr("100");
+pr(true);
+pr(3.5);
+pr(new Array(1,2,3));
+pr(new Date());
+//prNum(10);    //에러발생. 아래 스크립트 태그에 정의된 함수
+//document.write("ㅋㅋㅋㅋㅋㅋ");
+</script>
+<hr>
+<script>
+function prNum(p) {
+	if(typeof p == "number")
+		document.write("숫자 전달 : " + p + "<br>");
+	else if (p == undefined)
+		document.write("아규먼트를 전달하시오 : " + p + "<br>");
+	else
+		document.write(typeof p + " : " + p + "<br>");	
+}
+prNum(100);
+prNum("100");
+prNum(true);
+prNum(3.5);
+prNum(new Array(1,2,3));
+prNum();
+pr(100000);     //위에 위치한 스크립트태그의 함수는 호출 가능
+</script>
+<hr>
+<script>
+function prAll() {
+	for(var i=0; i < arguments.length; i++)
+		document.writeln(arguments[i]);     //출력 후 1칸 띄어쓰기
+	document.write("<br>");
+	return arguments.length;
+}
+var r1 = prAll(100);
+var r2 = prAll(1,2,3,4,5);
+var r3 = prAll('a', 'b', '가', true);
+var r4 = prAll();
+document.write(r1 + "<br>");
+document.write(r2 + "<br>");
+document.write(r3 + "<br>");
+document.write(r4 + "<br>");
+</script>
+</body>
+</html>
+
+
+
+
+
+

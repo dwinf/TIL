@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>아규먼트로 함수 전달하기(고차함수)</h1>
+<hr>
+<script>
+function output(p) {
+	if(typeof p == 'function') {
+		p("ㅋㅋㅋ");
+	} else {
+		document.write("<h2>ㅋㅋㅋ : "+p+"</h2>");		
+	}	
+}
+output("둘리");
+output(function(param) { console.log(param);})  //람다함수와 유사. 한번 쓰고 안쓸 함수를 아규먼트자리에 정의
+function myAlert(param) {
+//var myAlert = function(param) {
+	window.alert(param);
+}
+output(myAlert);
+</script>
+</body>
+</html>
+
+
+
+
+
+
