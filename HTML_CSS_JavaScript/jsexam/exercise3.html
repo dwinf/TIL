@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>exercise3</h1>
+<hr>
+<script>
+    function calc() {
+        var sum = 0;
+        if(arguments.length == 0)
+            return 0;
+        for(var i=0; i < arguments.length; i++) {
+            if(isNaN(arguments[i]))
+                return  "숫자만 전달하세요";
+
+            sum += parseInt(arguments[i]);
+        }
+        return sum;
+    }
+    document.write("<h3>" + calc() + "</h3>");
+    document.write("<h3>" + calc(10, 20, '30') + "</h3>");
+    document.write("<h3>" + calc(10, '가나다', 20) + "</h3>");
+    document.write("<h3>" + calc(1,2,3,4,5) + "</h3>");
+
+</script>
+</body>
+</html>
