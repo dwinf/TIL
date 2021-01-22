@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>자바스크립트 변수의 종류</h2>
+<hr>
+<script src="util.js"></script>     //사용하고자 하는 스크립트보다 먼저 선언되야함
+<script>
+var num1 = 100;
+let num2 = 200;
+const num3 = 300;
+writeColor("num1 : " + num1, "h1", "red");
+writeColor("num2 : " + num2, "h1", "green");
+writeColor("num3 : " + num3, "h1", "blue");
+hr()
+num1 = '가';
+num2 = '나';
+//num3 = '다';
+writeColor("num1 : " + num1, "h2", "red");
+writeColor("num2 : " + num2, "h2", "green");
+writeColor("num3 : " + num3, "h2", "blue");
+hr()
+var num1 = 3.5;
+//let num2 = 4.7;
+//const num3 = 5.3;
+writeColor("num1 : " + num1, "h3", "red");
+writeColor("num2 : " + num2, "h3", "green");
+writeColor("num3 : " + num3, "h3", "blue");
+</script>
+</body>
+</html>
+
+
+
+
+
+

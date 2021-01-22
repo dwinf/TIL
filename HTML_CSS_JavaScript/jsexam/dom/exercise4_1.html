@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var num = Math.floor(Math.random()*3) + 1;
+    const first = "../../first.html";
+    //const first = "localhost:8000/edu/first.html";
+
+    if(num == 1)
+        submit("다음");
+
+    else if(num == 2)
+        submit("네이버");
+
+    else if(num == 3)
+        submit("구글");
+
+    function submit(str){
+        var result = window.confirm(str + "페이지로 이동");
+        if(result == false)
+            location.href = first;
+        if(result == true && str == "다음")
+            location.href = "https://www.daum.net/";
+        if(result == true && str == "네이버")
+            location.href = "https://www.naver.com/";
+        if(result == true && str == "구글")
+            location.href = "https://www.google.com/";
+        }
+
+</script>
+</body>
+</html>

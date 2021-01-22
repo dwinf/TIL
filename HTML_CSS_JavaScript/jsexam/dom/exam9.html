@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p id="demo" onclick="myFunction()">Click me to change my text color.</p>
+
+<script>
+function myFunction() {
+    var pdom = document.getElementById("demo");
+    alert(pdom.getAttribute("id"));
+    alert(pdom.id);
+    pdom.style.color = "red";
+    // 백그라운드 칼라를 "lime" 으로 설정한다.
+     pdom.style.backgroundColor = "lime";
+    // 텍스트 굵기는 굵게 한다.
+     pdom.style.fontWeight = "bold";
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>자바스크립트 변수의 스코프</h2>
+<hr>
+<script src="util.js"></script> 
+<script>
+var g_v = 100;
+function scopeTest() {
+	var l_v = 1000;
+	writeNewLine("scopeTest() l_v : " + l_v);
+	writeNewLine("scopeTest() g_v : " + g_v );
+}
+scopeTest();
+try {
+	writeNewLine("l_v : " + l_v  );
+} catch(e) {
+	writeNewLine(e);
+}
+writeNewLine("g_v : " + g_v );
+</script>
+</body>
+</html>
+
+
+
+
+
+

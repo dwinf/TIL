@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>자바스크립트의 객체 생성과 사용</h1>
+<hr>
+<script src="util.js"></script>
+<script>
+var user1 = {}; //빈 객체 생성
+user1.name = "또치";
+user1.age = 11;
+
+var user2 = {name: "둘리", age: 10}
+
+var user3 = { father : {name : "고길동",age : 40}, son : {name : "희동이",age : 2} }
+
+writeColor(user1.name, "h3", "blue");
+writeColor(user2.name, "h3", "red");
+writeColor(user3.father.name, "h3", "green");
+writeColor(user3.son.name, "h3", "magenta");
+hr()
+writeColor("타입 : "+typeof user1, "h2", "#00ffff");
+writeColor("타입 : "+typeof user1.name, "h2", "#0ff");
+writeColor("타입 : "+typeof user3.son, "h2", "#ffff00");
+writeColor("타입 : "+typeof user3.son.age, "h2", "#000");
+</script>
+</body>
+</html>
+
+
+
+
+

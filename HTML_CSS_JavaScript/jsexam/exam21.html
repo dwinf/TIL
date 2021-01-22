@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>자바스크립트의 객체 생성과 사용(객체리터럴)</h1>
+<hr>
+<script src="util.js"></script>
+<script>
+	var obj = {
+			name : "듀크",
+			eat : function(food) {
+				writeColor(this.name +"가 "+food+
+	                   "를 먹어요!!", "h3", "green");
+			}
+	}
+	obj.eat("바나나");
+	obj.eat("딸기");
+	hr();
+	writeColor(typeof obj, 'h2', "red");
+	obj.project = "자바스크립트";
+	obj.study = function() {
+		writeColor(this.name +"가 "+this.project+
+                "를 공부해요!!", "h3", "magenta");
+	}
+    obj.study();
+    hr();
+    for(var key in obj)
+    	write(key + " : " + obj[key], "h4");
+    hr()
+    write(obj.project, "h2");
+    write(obj["project"], "h2");
+    delete obj.study;
+    for(var key in obj)
+    	write(key + " : " + obj[key], "h4");
+</script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script src="../util.js"></script>
+
+<h1 id="t1">컨텐트1</h1>
+<h2 id="t2">컨텐트5</h2>
+<p id="t3">컨텐트2</p>
+<div id="t4">컨텐트2</div>
+<img id="t5" src="../../images/totoro.png" width="100">
+<hr>
+<output id="p"></output>
+<hr>
+<script>
+// 고전이벤트모델
+window.onload = function() {
+	var dom1 = document.getElementById("t1");
+	console.log(dom1);
+	console.log(dom1.textContent);
+	var dom2 = document.getElementById("t3");
+	console.log(dom2);
+	var dom3 = document.getElementById("t4");
+	console.log(dom3);
+	var dom4 = document.getElementById("t5");
+	console.log(dom4);
+	console.log(dom4.getAttribute("src"));
+	console.log(dom4.src); 
+	var dom5 = document.getElementById("p");
+	dom5.innerHTML = "<h2>"+new Date().toLocaleString()+"</h2>";    //태그가 적용
+	//dom5.textContent = "<h2>"+new Date().toLocaleString()+"</h2>";    //태그도 문자열로 출력
+}
+</script>
+</body>
+</html>
+
+
+

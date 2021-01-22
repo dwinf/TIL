@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function myf() {
+    var h1dom = document.getElementsByTagName("h1");
+    console.log(h1dom.length);
+    for(var i=0; i <h1dom.length; i++)
+	    console.log(h1dom[i].textContent);
+    var h2dom = document.getElementsByTagName("h2");
+    console.log(h2dom[0].textContent);
+    console.log(h1dom[0]);
+    console.log(h2dom[0]);
+    var h5dom = document.getElementsByTagName("h5");
+    console.log(h5dom.length);
+}
+</script>
+</head>
+<body onload="myf()">
+<h1>컨텐트1</h1>
+<h1>컨텐트2</h1>
+<h1>컨텐트3</h1>
+<h1>컨텐트4</h1>
+<h2>컨텐트5</h2>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

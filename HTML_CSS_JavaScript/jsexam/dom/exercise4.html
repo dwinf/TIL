@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var num = Math.floor(Math.random()*3) + 1;
+    //const first = "../../first.html";
+    //const first = "localhost:8000/edu/first.html";
+    if(num == 1){
+        var result = window.confirm("다음으로 이동할까요?");
+        if(result)
+            location.href = "https://www.daum.net/";
+        else
+            location.href = "../../first.html";
+            //location.href = first;
+    }
+    else if(num == 2){
+        var result = window.confirm("네이버로 이동할까요?");
+        if(result)
+            location.href = "https://www.naver.com/";
+        else
+            location.href = "../../first.html";
+    }
+    else if(num == 3){
+        var result = window.confirm("구글로 이동할까요?");
+        if(result)
+            location.href = "https://www.google.com/";
+        else
+            location.href = "../../first.html";
+    }
+
+</script>
+</body>
+</html>

@@ -7,16 +7,18 @@
 <body>
 <script>
     var arr = [10, 5, 7,21, 4, 8, 18];
+    //var arr = new Array(10, 5, 7,21, 4, 8, 18);
     var sum = 0, max = 0, min = 100;
-    for(var i in arr)
+    //var sum = arr[0], max = arr[0], min = arr[0]; //배열의 첫 요소부터 시작
+    //for(var i = 1; i < arr.length; i++)
+    for(var i in arr) {
         sum += arr[i];
-    document.write("<h1>모든 원소의 합 : " + sum + "</h1>");
-    for(var i in arr){
         if(max < arr[i])
             max = arr[i];
         if(min > arr[i])
             min = arr[i];
     }
+    document.write("<h1>모든 원소의 합 : " + sum + "</h1>");
     document.write("<ul>");
     document.write("<li>최대값 : " + max + "</li>");
     document.write("<li>최소값 : " + min + "</li>");

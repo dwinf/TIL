@@ -9,16 +9,19 @@
 <hr>
 <script>
     function calc() {
-        var sum = 0;
+        var result = 1;
+        //var sum = 0;
         if(arguments.length == 0)
             return 0;
         for(var i=0; i < arguments.length; i++) {
             if(isNaN(arguments[i]))
                 return  "숫자만 전달하세요";
 
-            sum += parseInt(arguments[i]);
+            //sum += parseInt(arguments[i]);
+            result *= arguments[i];
         }
-        return sum;
+        //return sum;
+        return result;
     }
     document.write("<h3>" + calc() + "</h3>");
     document.write("<h3>" + calc(10, 20, '30') + "</h3>");

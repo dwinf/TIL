@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <style>
+        h1 {
+            color : red;
+        }
+        h2 {
+            color : blue;
+        }
+        h3 {
+            color : magenta;
+        }
+        h4 {
+            color : green
+        }
+        button {
+            padding : 10px;
+            border-radius : 5px;
+            color : orange;
+            font-weight : bold;
+        }
+    </style>
+</head>
+<body>
+<h1>자바스크립트의 랜덤값 처리</h1>
+<hr>
+<script>
+    var num = Math.floor(Math.random()*10) + 1  // 0 <= num < 1 의 난수 생성
+    document.write("<button>추출된 값 : " + num + "</button>");
+    if (num < 4)
+        document.write("<h2>1~3의 숫자가 추출되었어요.</h2>");
+    else if (num < 7)
+        document.write("<h3>4~6의 숫자가 추출되었어요.</h2>");
+    else if (num < 10)
+        document.write("<h4>7~9의 숫자가 추출되었어요.</h2>");
+    else {
+        var result = 0;
+        for(var n = 1; n <= 10; n++)
+            result += n;
+        document.write("<h1>1~10까지의 합 : " + result + "</h1>")
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

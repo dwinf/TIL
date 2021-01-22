@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        button:nth-of-type(1) {
+	color : red;
+	font-size : 1.5em;
+        }
+        button:nth-of-type(2) {
+	color : blue;
+	font-size : 1.5em;
+        }
+        button:nth-of-type(3) {
+	color : green;
+	font-size : 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="f1('red');">빨강색</button>
+    <button onclick="f1('blue');">파랑색</button>
+    <button onclick="f1('green');">녹&nbsp;&nbsp;색</button>
+    <hr>
+    <h2></h2>
+
+    <script>
+    function f1(p) {
+        var str = new Date();
+        var today = "오늘은 "+str.getFullYear()+"년 "+(str.getMonth()+1)+"월 "+str.getDate()+"일입니다.";
+        var target = document.querySelector("h2");
+        target.style.color = p;
+        target.textContent = today;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>컨텐트1</h1>
+<h1>컨텐트2</h1>
+<h1>컨텐트3</h1>
+<h1>컨텐트4</h1>
+<h2>컨텐트5</h2>
+<script src="../util.js"></script>
+<script>
+var h1dom = document.getElementsByTagName("h1");
+write(h1dom.length, "h3");
+for(var i=0; i <h1dom.length; i++)
+	writeColor(h1dom[i].textContent, "h4", "red");
+var h2dom = document.getElementsByTagName("h2");
+writeColor(h2dom[0].textContent, "h2", "green");
+writeColor(h1dom[0], "h2", "blue");
+writeColor(h2dom[1], "h2", "blue");
+var h5dom = document.getElementsByTagName("h5");
+writeColor(h5dom.length, "h2", "magenta");
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

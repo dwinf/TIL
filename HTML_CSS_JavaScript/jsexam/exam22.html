@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>자바스크립트의 객체 생성과 사용(객체리터럴)</h1>
+<hr>
+<script src="util.js"></script>
+<script>
+var student = {
+		name : "둘리",
+		kor : 90,
+		eng : 80,
+		math : 95,
+		getSum : function() {
+			return this.kor + this.eng + this.math;
+		},
+		getAvg : function() {
+			return this.getSum() / 3;
+		},
+		toString : function() { //주석처리를 해도 에러발생x. object라는 부모객체의 tostring메서드 수행
+			return this.name +"학생의 총점은 "+this.getSum()+
+			                              "입니다.";
+		}
+}
+write("총점 : "+student.getSum(), "h3");
+write("평균 : "+student.getAvg(), "h3");
+writeColor(student.toString(), "h3", "blue");
+writeColor(student, "h3", "blue");
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

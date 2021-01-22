@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 style="text-shadow: 2px 2px 3px gray">세 가지 이벤트 모델</h1>
+<hr>
+<h2 onclick="f1(this);">인라인 이벤트 모델</h2>
+<hr>
+<h2 id="t1">고전 이벤트 모델</h2>
+<hr>
+<h2 id="t2">표준 이벤트 모델</h2>
+<hr>
+<script>
+	function f1(p) {
+		alert(p.textContent);
+		alert(document.querySelectorAll('h2')[0].textContent);
+		//alert(this.textContent);  //undefined
+		//alert(this);  //[object Window]
+	}
+	var dom2 = document.querySelector('#t1');
+    var dom3 = document.querySelector('#t2');
+	function f2(e) {
+		alert(dom2.textContent);
+		alert(this.textContent);
+		alert(e.target.textContent);
+	}
+	function f3(e) {
+		alert(dom3.textContent);
+		alert(this.textContent);
+		alert(e.target.textContent);
+	}    
+    dom2.onclick = f2;  //고전
+    dom3.addEventListener("click", f3); // 표준
+</script>
+</body>
+</html>
+
+
+
+
+
