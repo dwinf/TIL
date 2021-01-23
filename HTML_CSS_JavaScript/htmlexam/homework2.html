@@ -31,16 +31,25 @@
         table, th, td {
 		    border : 1px solid green;
 		    border-collapse : collapse;
+		    font-weight: bold;
 	    }
         th {
 		    background-color : lime;
 	    }
+	    td {
+	        width : 100px;
+	        padding-left : 15px;
+	    }
+	    td:nth-child(2){
+	        width : 60px;
+	    }
         section{
-            width : 50%;
+            width : 60%;
             margin : 10px auto;
         }
         figure {
             text-align : center;
+
         }
         aside{
             text-align:center;
@@ -74,7 +83,7 @@
         </ul>
     </article>
     <article>
-        <h3 style="color : green">재미있게 읽은 책</h3>
+        <h2 style="color : green">재미있게 읽은 책</h2>
         <table border="1">
             <tr><th>제목</th><th>장르</th></tr>
             <tr><td>해리포터</td><td>판타지</td></tr>
@@ -84,10 +93,10 @@
         </table>
     </article>
     <article>
-        <h3 style="color : blue">자랑하고 싶은 <span style="color : purple">우리동네</span>의 아름다운 곳</h3>
-        <h4>수리산역 근처에 위치한 철쭉공원으로 매년 4월 철쭉이 만개했을 때 아름다운 풍경을 볼 수 있다.</h4>
+        <h2 style="color : blue">자랑하고 싶은 <span style="color : purple">우리동네</span>의 아름다운 곳</h2>
+        <h3>수리산역 근처에 위치한 철쭉공원으로 매년 4월 철쭉이 만개했을 때 아름다운 풍경을 볼 수 있다.</h3>
         <figure>
-            <img src="http://localhost:8000/edu/images/gunpo.png" width="500">
+            <img src="../images/gunpo.png" width="500">
             <figcaption>4월의 철쭉동산</figcaption>
         </figure>
     </article>

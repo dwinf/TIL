@@ -19,27 +19,29 @@
     </style>
 </head>
 <body>
-<script src="../util.js"></script>
-    <button onclick="f1(this);">빨강색</button>
-    <button onclick="f1(this);">파랑색</button>
-    <button onclick="f1(this);">녹&nbsp;&nbsp;색</button>
+    <button onclick="f1();">빨강색</button>
+    <button onclick="f2();">파랑색</button>
+    <button onclick="f3();">녹&nbsp;&nbsp;색</button>
     <hr>
     <h2></h2>
-    <output id="p"></output>
+
     <script>
-    var str = new Date();
-    var today = "오늘은 "+str.getFullYear()+"년 "+(str.getMonth()+1)+"월 "+str.getDate()+"일입니다.";
+        var str = new Date();
+        var today = "오늘은 "+str.getFullYear()+"년 "+(str.getMonth()+1)+"월 "+str.getDate()+"일입니다.";
+        var target = document.getElementsByTagName("h2")[0];
 
-    var buttons = document.getElementsByTagName("button")
-
-    function f1(p) {
-        if(p.textContent == "빨강색")
-            writeColor(today, "h2", "red");
-        else if(p.textContent == "파랑색")
-            writeColor(today, "h2", "blue");
-        else
-            writeColor(today, "h2", "green");
-    }
+        function f1() {
+            target.style.color = "red";
+            target.innerHTML = "<h2>" +today+"</h2>";
+        }
+        function f2() {
+            target.style.color = "blue";
+            target.innerHTML = "<h2>" + today + "</h2>";
+        }
+        function f3() {
+            target.style.color = "green";
+            target.innerHTML = "<h2>" + today + "</h2>";
+        }
     </script>
 </body>
 </html>
