@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<h1>주소와 좌표 변환 프로그램</h1>
+	<button onclick="addToCoord();">주소를 좌표로</button>
+	<button onclick="coordToAddr();">다시 주소로</button>
+	<script>
+	var latlng;
+		function addToCoord() {
+			var address = prompt("주소를입력하세요");
+			var lat;
+			var lng;
+			if (address) {
+				$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDy81EbO46BRSnX1DOgg_F84bhsdbku2z4&address="+encodeURIComponent(address), function(data) {
+					lat = data.results[0].geometry.location.lat;
+					lng = data.results[0].geometry.location.lng;
+					alert("좌표로 : " + lat + ":" + lng);		
+					latlng = encodeURIComponent(lat+","+lng);											
+				});		
+				
+			}
+		}
+	    function coordToAddr() {
+	    	$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDy81EbO46BRSnX1DOgg_F84bhsdbku2z4&latlng="+latlng, function(data) {
+				alert("다시 주소로 : " + data.results[0].formatted_address);
+			});
+	    }
+	</script>
+</body>
+</html>
