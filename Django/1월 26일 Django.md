@@ -71,7 +71,7 @@ http://www.domain.com:1234/path/to/resource?a=b&x=y
 - /path/to/resource : resource path
   - resource path가 생략되면 기본파일을 달라는 의미로 해석
   - 일반적으로 index.html를 요청하게 됨
-- a=b&x=y : query = 서버에 보내는 데이터
+- ?a=b&x=y : query = 서버에 보내는 데이터
 
 
 
@@ -92,7 +92,7 @@ http://www.domain.com:1234/path/to/resource?a=b&x=y
 
 404 - 실패, 요청한 자원을 찾을 수 없음
 
-500 - 실패, 서버 에러
+500 - 실패, 서버에서 에러 발생
 
 
 
