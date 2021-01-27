@@ -9,9 +9,9 @@
 <hr>
 <h2>전달된 Query :  {{ result }} </h2>
 <hr>
-<a href="http://localhost:8000/secondapp/exam2_1">하이퍼 링크 텍스트로 요청하기</a>
+<a href="http://localhost:8000/secondapp/exam2_1/">하이퍼 링크 텍스트로 요청하기</a>
 <hr>
-<form method="GET" method="/secondapp/exam2_1">
+<form method="GET" method="/secondapp/exam2_1/">
     <input type="hidden" name="info1" value="django">
     <input type="hidden" name="info2" value="css">
     <input type="hidden" name="info3" value="javascript">
@@ -19,9 +19,10 @@
 </form>
 <hr>
 {% load static %}
-<a href="http://localhost:8000/secondapp/exam2_1"><img src="{% static 'images/olaf5.png' %}" width="150"></img></a>
+<a href="http://localhost:8000/secondapp/exam2_1/"><img src="{% static 'images/olaf5.png' %}" width="150"></img></a>
+<!--<a href="http://localhost:8000/secondapp/exam2_1/?info1=aa&info2=BB&info3=CC"></a>-->
 <hr>
-<form method="POST" method="/secondapp/exam2_1">
+<form method="POST" method="/secondapp/exam2_1/">
     {% csrf_token %}
     <input type="hidden" name="info1" value="django">
     <input type="hidden" name="info2" value="css">
