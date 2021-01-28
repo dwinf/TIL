@@ -11,9 +11,21 @@ def exercise1(request):
 
 def exercise2(request):
     if request.method == 'POST':
-        num = int(request.POST['number'])
-        context = {'num': num * num}
+        name = request.POST['name']
+        opinion = request.POST['opinion']
+        context = {'name': name, 'opinion': opinion}
     else:
         context = None
     return render(request, 'exercise2.html', context)
+
+
+def product1(request):
+    name = request.POST.get('name', "없음")
+    context = None
+    return render(request, 'product1.html', context)
+
+
+def basket1(request, pid):
+    context = {'pid': pid}
+    return render(request, 'basket1.html', context)
 # Create your views here.
