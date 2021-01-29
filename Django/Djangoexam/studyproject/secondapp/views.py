@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, FileResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 import random
 
@@ -198,3 +198,125 @@ def exam19(request):
     dt = datetime.now()
     context = {'current_date': dt}
     return render(request, 'exam19.html', context)
+
+
+def exam20(request):
+    return render(request, 'exam20.html')
+
+
+def exam21(request):
+    return render(request, 'exam21.html')
+
+
+def exam22(request):
+    return render(request, 'exam22.html')
+
+
+def exam24(request):
+    return render(request, 'exam24.html')
+
+
+def exam23(request):
+    return render(request, 'exam23.html')
+
+
+def json1(request):
+    return JsonResponse({
+        'message': '안녕 파이썬 장고',
+        'items': ['가나다', '파이썬', '장고', '자바스크립트', 'CSS3'],
+        'num': 100
+    }, json_dumps_params={'ensure_ascii': False})
+
+
+def json2(request):
+    data = [{'name': 'Peter', 'email': 'peter@example.org'},
+            {'name': 'Julia', 'email': 'julia@example.org'}]
+    return JsonResponse(data, safe=False)
+
+
+def json3(request):
+    return JsonResponse({"name": "자바스크립트", "age": 21, "kind": "웹앱개발 전용 OOP 언어"},
+                        json_dumps_params={'ensure_ascii': False})
+
+
+def product1(request):
+    return render(request, "product1.html", {'datas': [x for x in range(1, 11)]})
+
+
+def basket1(request):
+    pid = request.GET.get("pid")
+    context = {'pid': pid, 'count': 1}
+    return render(request, "basket1.html", context)
+
+
+def product2(request):
+    return render(request, "product2.html", None)
+
+
+def basket2(request):
+    pid = request.GET.get("pid")
+    jsonContent = {"pid": pid, "count": 1}
+    return JsonResponse(jsonContent)
+
+
+def ggmap1(request):
+    return render(request, "ggmap1.html", None)
+
+
+def ggmap2(request):
+    return render(request, "ggmap2.html", None)
+
+
+def ggmap3(request):
+    return render(request, "ggmap3.html", None)
+
+
+def ggmap4(request):
+    return render(request, "ggmap4.html", None)
+
+
+def ggmap5(request):
+    return render(request, "ggmap5.html", None)
+
+
+def ggmap6(request):
+    return render(request, "ggmap6.html", None)
+
+
+def ggmap7(request):
+    lat = [37.5115, 37.5094, 37.5080, 37.5110, 37.5088]
+    lng = [127.0500, 127.0503, 127.0600, 127.0590, 127.0560];
+    hname = ['듀크1', '듀크2', '듀크3', '듀크4', '듀크5'];
+    address = ['aaa', 'bbb', 'ccc', 'ddd', 'eee'];
+    context = {
+        'lat': lat, 'lng': lng, 'hname': hname, 'address': address
+    }
+    return render(request, "ggmap7.html", context)
+
+
+def kkmap1(request):
+    return render(request, "kkmap1.html", None)
+
+
+def kkmap2(request):
+    return render(request, "kkmap2.html", None)
+
+
+def kkmap3(request):
+    return render(request, "kkmap3.html", None)
+
+
+def kkmap4(request):
+    return render(request, "kkmap4.html", None)
+
+
+def kkmap5(request):
+    return render(request, "kkmap5.html", None)
+
+
+def kkmap6(request):
+    return render(request, "kkmap6.html", None)
+
+
+def kkmap7(request):
+    return render(request, "kkmap7.html", None)

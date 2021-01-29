@@ -20,9 +20,7 @@ def exercise2(request):
 
 
 def product1(request):
-    name = request.POST.get('name', "없음")
-    context = None
-    return render(request, 'product1.html', context)
+    return render(request, 'product1.html')
 
 
 def basket1(request, pid):

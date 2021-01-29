@@ -1,0 +1,32 @@
+{% extends 'basesimple.html' %}
+
+{% block mycss %}
+img {
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	padding: 10px;
+	box-shadow: 10px 10px 5px gray;
+	margin: 10px;
+}
+section {
+	text-align: center;
+}
+{% endblock %}
+
+{% block mycontent %}
+<h2 style="text-align:center">원하는 상품을 클릭해 주세요!!!</h2>
+<hr>
+<section>
+	{% for data in datas %}
+		{% if data != 10 %}
+			<a href="/secondapp/basket1?pid=p00{{data}}"><img src='/static/images/{{data}}.jpg'></a>
+		{% else %}
+			<a href="{% url 'basket1' %}?pid=p0{{data}}"><img src='/static/images/{{data}}.jpg'></a>
+		{% endif %}
+	    {% if data == 5 %}
+			<br>
+		{% endif %}
+	{% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Simple Map</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDy81EbO46BRSnX1DOgg_F84bhsdbku2z4"></script>
+<style type="text/css">
+#map {
+	height: 600px;
+	width: 100%;
+}
+</style>
+</head>
+<script>
+	let dom;
+	let addr;
+	function inputaddress() {
+		addr = window.prompt("주소를 입력하세요");
+		const url= 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDy81EbO46BRSnX1DOgg_F84bhsdbku2z4&address='
+							+ encodeURIComponent(addr)
+					
+	   	$.getJSON(url, function(obj) {
+				const lat = obj.results[0].geometry.location.lat;
+				const lng = obj.results[0].geometry.location.lng;
+				$('#map').empty();
+				googlemap(lat, lng);
+			}
+		);
+	}
+	
+	function googlemap(latp, lngp) {
+		var latlng = { lat: latp, lng: lngp }
+		var map = new google.maps.Map(document.getElementById("map"), {
+	       	center: latlng,
+	       	zoom: 16
+	   	});
+			    
+	    var image = {
+			  url: '/static/images/duke.png',
+			  size: new google.maps.Size(50, 60),
+			  origin: new google.maps.Point(0, 0),
+			  anchor: new google.maps.Point(17, 34),
+			  scaledSize: new google.maps.Size(25, 25)
+		};
+						
+		var marker = new google.maps.Marker({position: latlng, icon : image, map: map});
+
+		var contentString =
+				       "<h2 style='color:red;'>" + addr + "("+latp+":"+lngp+")</h2>";
+						
+		var infowindow = new google.maps.InfoWindow({
+		    content: contentString
+		});
+		marker.addListener('click', function() {
+		    infowindow.open(map, marker);
+		});
+	}
+
+	$(function () {
+		$('#btn').click(inputaddress);
+	});
+</script>
+</head>
+<body>
+	<h1>주소를 입력받아 지도를 출력하는 프로그램</h1>
+	<button id="btn">주소 입력</button>
+	<br>
+	<br>
+	<div id="map" style="width:700px; height:450px;"></div>
+</body>
+</html>

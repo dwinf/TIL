@@ -1,0 +1,6 @@
+{% extends 'basesimple.html' %}
+
+{% block mycontent %}
+<h3>{{ pid }} 상품을 {{ count }}개 선택하셨군요...</h3>
+<a href="{% url 'product1' %}">상품 선택 화면으로</a>
+{% endblock %}

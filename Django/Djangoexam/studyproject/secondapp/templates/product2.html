@@ -1,0 +1,49 @@
+{% extends 'basesimple.html' %}
+
+{% block mycss %}
+img {
+	width: 150px;
+	height: 150px;
+	border: 1px solid black;
+	padding: 10px;
+	box-shadow: 10px 10px 5px gray;
+	margin: 10px;
+}
+section {
+	text-align: center;
+}
+{% endblock %}
+
+{% block mycontent %}
+<h2 style="text-align:center">원하는 상품을 클릭해 주세요!!</h2>
+<hr>
+{% load static %}
+<section>
+	<img src="{% static 'images/1.jpg' %}">
+	<img src="{% static 'images/2.jpg' %}">
+	<img src="{% static 'images/3.jpg' %}">
+	<img src="{% static 'images/4.jpg' %}">
+	<img src="{% static 'images/5.jpg' %}"><br>
+	<img src="{% static 'images/6.jpg' %}">
+	<img src="{% static 'images/7.jpg' %}">
+	<img src="{% static 'images/8.jpg' %}">
+	<img src="{% static 'images/9.jpg' %}">
+	<img src="{% static 'images/10.jpg' %}">
+</section>
+<p style="text-align:center"><output></output></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('img').each(function(index, dom) {
+		$(dom).click(function() {
+			if (index < 9)
+				pid = 'p00'+(index+1);
+			else
+				pid = 'p0'+(index+1);
+			$.getJSON("{% url 'basket2' %}?pid="+pid, function(jsonObj) {
+				$("output").html("<h3>"+jsonObj.pid+"상품을 "+ jsonObj.count+"개 선택하셨네요<h3>");
+			});
+		});
+    });
+
+</script>
+{% endblock %}
