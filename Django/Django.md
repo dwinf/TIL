@@ -158,3 +158,36 @@ CRUD(Create, Read, Update, Delete)
 
    - U, D : API를 통해 구현
 
+
+
+---
+
+---
+
+2월 2일
+
+heidisql 설치
+
+##### thirdapp의 models.py
+
+```python
+name = models.CharField(max_length=10)  # max_length 필수
+age = models.IntegerField(null=True)  # 생략 가능하도록 설정
+```
+
+- CharField -> VARCHAR(가변길이) 타입으로 생성, CHAR(고정길이)
+
+- null=True : 값을 입력하지 않아도 된다.
+- id는 따로 주지 않았지만 자동으로 추가된다.
+  - 입력되는 데이터 순으로 1, 2, 3
+
+```
+DBTest.objects.all()	//모든 데이터를 QuerytSet 객체로 가져온다
+DBTest.objects.count()	//데이터의 개수 리턴
+DBTest.objects.first()	//첫번째 데이터 리턴
+DBTest.objects.last()	//마지막 데이터 리턴
+DBTest.objects.order_by('age')	//데이터를 나이순으로 정렬
+DBTest.objects.filter('둘리')	//둘리라는 요소를 가진 데이터 리턴
+DBTest.objects.get(id=1)	//id가 1인 데이터 리턴
+```
+
