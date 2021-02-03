@@ -191,3 +191,101 @@ DBTest.objects.filter('둘리')	//둘리라는 요소를 가진 데이터 리턴
 DBTest.objects.get(id=1)	//id가 1인 데이터 리턴
 ```
 
+studyproject/forthapp
+
+
+
+---
+
+---
+
+2월 3일
+
+accountapp/view.py
+
+```python
+def index(request) :
+    context = None
+    print(request.user.is_authenticated)
+    print(request.user)
+    if request.user.is_authenticated:
+        context = {'logineduser': request.user}
+    return render(request, 'index.html', context)
+```
+
+- request.user.is_authenticated : 로그인 여부를 확인(했으면 True)
+- 로그인된 유저라면 회원정보 리턴
+
+
+
+```python
+def register(request):
+    res_data = None
+    if request.method =='POST':
+        useremail = request.POST.get('useremail')
+        firstname = request.POST.get('firstname', None)
+        lastname = request.POST.get('lastname', None)
+        password = request.POST.get('password', None)
+        re_password = request.POST.get('re-password',None)
+        res_data = {}
+        if User.objects.filter(username=useremail):
+            res_data['error']='이미 가입된 아이디(이메일주소)입니다.'
+        elif password != re_password:
+            res_data['error']='비밀번호가 다릅니다.'
+        else:
+            user = User.objects.create_user(username = useremail,
+                            first_name = firstname,
+                            last_name = lastname,
+                            password = password)
+            auth.login(request, user)
+            redirect("index.html")
+    return render(request, 'register.html', res_data)
+```
+
+- User.objects.filter : 유저 검색을 통해 일치하는 값을 찾음
+- User.objects.create_user : 새로운 유저 생성
+- auth.login(request, user) : 로그인 실행
+- redirect("index.html") : 첫 화면으로 이동
+
+
+
+```python
+def login(request):
+    if request.method == "POST":
+        useremail = request.POST.get('useremail', None)
+        password = request.POST.get('password', None)
+        user = auth.authenticate(username=useremail, password=password)
+        if user is not None :
+            auth.login(request, user)
+            return redirect("index")
+        else :
+            return render(request, 'login.html', {'error': '사용자 아이디 또는 패스워드가 틀립니다.'})
+    else :
+        return render(request, 'login.html')
+```
+
+- auth.authenticate : 조건에 해당하는 유저정보 리턴
+
+
+
+```python
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+    return redirect("index")
+```
+
+- auth.logout(request) : 로그아웃
+
+
+
+```python
+def only_member(request) :
+    context = None
+    if request.user.is_authenticated:
+        context = {'logineduser': request.user.last_name+request.user.first_name}
+    return render(request, 'member.html', context)
+```
+
+- 유저정보가 있다면 이동시켜줌
+
