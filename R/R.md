@@ -190,12 +190,90 @@ x[x > 5 & x < 15]	# 5보다 크고 15보다 작은 값 출력
 
 - 2차원 벡터
 - **동일 타입의 데이터만 저장 가능**
-
-- 행렬 생성방법 : matrix(data=벡터, nrow=행의갯수, ncol=열의갯수, [byrow=TRUE])
-  - 행의 개수 혹은 열의 개수중 하나는 주지 않아도 된다. -> nxn 행렬 생성
+- 인덱싱 : **[행의인덱싱, 열의인덱싱]**,[행의인덱싱, ], [, 열의인덱싱], **drop 속성-행렬구조 유지여부**(기본 T)
+- 행렬 생성방법 : **matrix(data=벡터, nrow=행의갯수, ncol=열의갯수, [byrow=TRUE])**
+  - 행의 개수 혹은 열의 개수중 하나는 주지 않아도 된다. -> 원소값의 개수에 따라 행렬 생성
   - 기본적으로 열부터 채워감
     - `byrow=TRUE`를 주면 행부터 채움
   - rbind(벡터들..), cbind(벡터들..)
 
+```R
+x1 <-matrix(1:8, nrow = 2)	# ncol 매개변수 생략
+x1<-x1*3	# 모든 원소값 x3
+x2 <-matrix(1:8, nrow =3)	# 행렬의 비는 부분은 1, 2, 3... 순으로 채움
+
+(chars <- letters[1:10]) # 바로 출력하여 확인할 경우 유용
+mat1 <-matrix(chars)	# 10행 1열 행렬 생성(열의 개수 지정x)
+
+matrix(chars, nrow=5)	# 5행2열 행렬(1열부터 채움)
+matrix(chars, nrow=5, byrow=T)	# 5행2열 행렬(1행부터 채움)
+
+m <- matrix(chars, nrow=3)
+m[1,1]
+m[3,4]
+m[3,4] <- 'w'	# 인덱스를 통해 요소를 바꿈
+colnames(m)
+rownames(m)
+#행과 열에 이름 부여
+colnames(m) <- c('c1', 'c2', 'c3', 'c4')
+rownames(m) <- c('r1', 'r2', 'r3')
+
+vec1 <- c(1,2,3)
+vec2 <- c(4,5,6)
+vec3 <- c(7,8,9)
+mat1 <- rbind(vec1,vec2,vec3); mat1	# 벡터가 행으로 들어감
+mat2 <- cbind(vec1,vec2,vec3); mat2	# 벡터가 열로 들어감
+```
+
 - 행렬에 관한 다양한 함수들
-  - dim(m)-행렬이 몇차원인지 체크, nrow(행렬), ncol(행렬) colnames(m), rownames(m), rowSums(m), colSums(m), rowMeans(m), colMeans(m), sum(m), mean(m), apply(m, 1 또는 2, 함수)
+  - dim(m)-행렬이 몇차원인지 체크, nrow(행렬), ncol(행렬) colnames(m), rownames(m), rowSums(m), colSums(m), rowMeans(m), colMeans(m), sum(m), mean(m), **apply(m, 1 또는 2, 함수)**
+
+
+
+#### 배열(Array)
+
+- 3차원 벡터
+- 동일 타입의 데이터만 저장 가능
+- 인덱싱 : **[행의 인덱싱, 열의 인덱싱, 층(면)의 인덱싱]**
+
+```R
+a1 <- array(1:30, dim=c(2,3,5)) # dim 매개변수 필수
+a1 # 2행 3열 5면의 3차원
+
+a1[1,3,4]
+a1[,,3]
+a1[,2,]
+a1[1,,]
+a1*100
+```
+
+
+
+#### 팩터(factor)
+
+- 가능한 범주값(level) 만으로 구성되는 벡터
+  - 범주형 데이터셋(벡터, 행렬, 배열 등은 질적 데이터)
+- 팩터의 생성
+  -  factor(벡터), factor(벡터[, levels=레벨벡터]), factor(벡터[, levels=레벨벡터], ordered=TRUE)
+
+- 팩터의 레벨 정보 추출 : levels(팩터변수)
+
+
+
+#### 데이터프레임(data.frame)
+
+- 2차원 구조 
+- 열 단위로 서로 다른 타입의 데이터들로 구성 가능 
+- **모든 열의 데이터 개수(행의 개수)는 동일해야 한다.** 
+- 데이터프레임 생성 방법 
+  - **data.frame**(백터들..)
+  - data.frame(열이름=벡터,…) 
+  - data.frame(벡터들…) [**,stringsAsFactors=FALSE**])  # 4.0 이전에는 T가 기본 4.0 부터는 F 가 기본 
+  - as.data.frame(벡터 또는 행렬 등)
+- 데이터프레임 변환 : **rbind(df, 백터), cbind(df, 벡터)**
+  - 주로 cbind를 사용
+- 데이터프레임의 구조 확인 :**str(df)**, dim(df) 
+- 인덱싱 : **[행의인덱싱, 열의인덱싱],[열의인덱싱]**, **df$컬럼이름**, [[열인덱싱]]
+  - 일반적으로 열의 인덱싱을 우선으로 처리하므로 컬럼이름 혹은 숫자만 작성할 경우 열의 인덱싱으로 간주
+  - 인덱싱에 조건식을 줄 수 있다.
+- 원하는 행과 열 추출 : subset(df, select=컬럼명들, subset=(조건))
