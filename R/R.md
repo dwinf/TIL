@@ -557,27 +557,50 @@ f8(10,20,30); f8(10,20,"test", 30,40)
 
 ### 파일입출력
 
+#### scan()
+
 ```R
 nums <- scan("data/sample_num.txt") # 숫자 읽는 것에 특화. 문자는 에러
 word_ansi <- scan("data/sample_ansi.txt",what="") # 문자열, 실수 이용 시
 words_utf8 <- scan("data/sample_utf8.txt", what="",encoding="UTF-8")
 words_utf8_new <- scan("data/sample_utf8.txt", what="")
-lines_ansi <- readLines("data/sample_ansi.txt")
-lines_utf8 <- readLines("data/sample_utf8.txt",encoding="UTF-8")
-df2 <- read.table("data/product_click.log", stringsAsFactors = T) 
-# read.csv, 문자열은 팩터로 인식하도록
 ```
 
 - `scan()` 함수는 숫자를 읽는 것에 특화
 - 문자, 실수를 읽기 위해서는 `what=''` 사용
 - UTF-8 형식의 파일은 인코딩 타입 지정
+
+#### readLines()
+
+```R
+lines_ansi <- readLines("data/sample_ansi.txt")
+lines_utf8 <- readLines("data/sample_utf8.txt",encoding="UTF-8")
+```
+
 - `readlines()`는 파일을 문장 단위로 읽어옴
 
-- read.csv : `,` 로 구분되는 파일을 읽을 때
-  - 첫 행은 무조건 컬럼명으로 인식
-  - 확인해보니 공백으로 구분되는 파일도 잘 읽어옴;;
+#### read.csv ()
 
-- read.table : `공백 또는 탭`으로 구분되는 파일을 읽을 때
-  - 파일을 읽을 때 컬럼명을 자동으로 부여
-  - 첫 행부터 데이터로 저장
-  - csv파일도 읽긴 하지만 모든 열을 1행으로 읽어옴(형식파괴)
+- `,` 로 구분되는 파일을 읽을 때
+- 데이터프레임
+- 첫 행은 무조건 컬럼명으로 인식
+- 확인해보니 공백으로 구분되는 파일도 읽어오긴 함
+  - 단, 열 구분은 안됨
+
+```R
+df3 <- read.csv('data/emp.csv')
+```
+
+#### read.table()
+
+- `공백 또는 탭`으로 구분되는 파일을 읽을 때
+- 데이터프레임
+- 파일을 읽을 때 컬럼명을 자동으로 부여(v1, v2...)
+- 첫 행부터 데이터로 저장
+- csv파일도 읽긴 하지만 열 구분은 안됨(형식파괴)
+
+```R
+df2 <- read.table("data/product_click.log", stringsAsFactors = T) 
+# read.csv와 유사, 문자열은 팩터로 인식하도록
+```
+

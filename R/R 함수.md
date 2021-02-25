@@ -519,21 +519,12 @@ df4$grade <- ifelse(df4$score >= 150, 'A',
 
 - `table()` : 원소 각각의 개수를 세서 리턴
 
-  - ```
+  - ```R
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
      1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1 
      fail pass 
        9   11 
     ```
-
-### 7. 파일입출력
-
-> read.csv는 무조건 데이터 프레임을 리턴한다.
-
-- `read.csv(data/emp.csv)` : 상대 경로를 이용
-  - `getwd()` : 현재 위치(get working directory)
-- `read.csv(/kdc/Rexam/data/emp.csv)` : 절대 경로를 이용
-- `read.csv(file.choose())` : 불러올 파일을 선택할
 
 
 
@@ -789,5 +780,85 @@ for(i in 5:15){
   sum <- sum + i
   print(paste(i,":",sum))
 }
+```
+
+
+
+## 함수
+
+### 함수 선언
+
+```R
+함수명 <- function([매개변수]){
+	함수의 수행 코드
+	[return(리턴값)] # 없으면 NULL 리턴 혹은 마지막 출력 데이터값 리턴
+}
+
+f1 <- function() 
+    print("TEST")	# 마지막 출력 데이터값 리턴
+
+f5<- function(...) { # 가변인수
+    print("TEST")
+    data <- c(...)
+    print(length(data))
+}
+```
+
+
+
+## 파일 입출력
+
+> read.csv, read.table은 무조건 데이터 프레임을 리턴한다.
+
+- `data/emp.csv` : 상대 경로를 이용
+  - `getwd()` : 현재 위치(get working directory)
+- `/kdc/Rexam/data/emp.csv` : 절대 경로를 이용
+- `file.choose()` : 불러올 파일을 선택할
+
+#### scan()
+
+```R
+nums <- scan("data/sample_num.txt") # 숫자 읽는 것에 특화. 문자는 에러
+word_ansi <- scan("data/sample_ansi.txt",what="") # 문자열, 실수 이용 시
+words_utf8 <- scan("data/sample_utf8.txt", what="",encoding="UTF-8")
+words_utf8_new <- scan("data/sample_utf8.txt", what="")
+```
+
+- `scan()` 함수는 숫자를 읽는 것에 특화
+- 문자, 실수를 읽기 위해서는 `what=''` 사용
+- UTF-8 형식의 파일은 인코딩 타입 지정
+
+#### readLines()
+
+```R
+lines_ansi <- readLines("data/sample_ansi.txt")
+lines_utf8 <- readLines("data/sample_utf8.txt",encoding="UTF-8")
+```
+
+- `readlines()`는 파일을 문장 단위로 읽어옴
+
+#### read.csv ()
+
+- `,` 로 구분되는 파일을 읽을 때
+- 데이터프레임
+- 첫 행은 무조건 컬럼명으로 인식
+- 확인해보니 공백으로 구분되는 파일도 읽어오긴 함
+  - 단, 열 구분은 안됨
+
+```R
+df3 <- read.csv('data/emp.csv')
+```
+
+#### read.table()
+
+- `공백 또는 탭`으로 구분되는 파일을 읽을 때
+- 데이터프레임
+- 파일을 읽을 때 컬럼명을 자동으로 부여(v1, v2...)
+- 첫 행부터 데이터로 저장
+- csv파일도 읽긴 하지만 열 구분은 안됨(형식파괴)
+
+```R
+df2 <- read.table("data/product_click.log", stringsAsFactors = T) 
+# read.csv와 유사, 문자열은 팩터로 인식하도록
 ```
 
