@@ -904,3 +904,86 @@ df2 <- read.table("data/product_click.log", stringsAsFactors = T)
 # read.csv와 유사, 문자열은 팩터로 인식하도록
 ```
 
+
+
+
+
+## 기타 함수들
+
+#### invisible()
+
+```R
+ft.2 <- function(x) return(x+10) # 함수 호출시 결과 출력
+ft.3 <- function(x) invisible(x+10)
+```
+
+- 함수의 리턴방식
+- 함수의 리턴 결과를 출력하지 않는다.
+
+
+
+#### sleep()
+
+```R
+testSleep <- function(second) {
+  for(data in LETTERS[1:5]) {
+    cat(data)
+    Sys.sleep(second)
+  }
+}
+```
+
+- 출력 시간을 조절
+  - sleep 시간만큼 기다린 뒤 출력
+
+
+
+#### quantile()
+
+```R
+o1 <- c(1,2,3,4,5) # 1 2 3 4 5
+quantile(o1)
+```
+
+- 데이터의 사분위수를 계산하여 출력
+  - 0% 25% 50% 75% 100%
+
+
+
+#### sapply(), lapply()
+
+```R
+v <- c(10,11,20,22,30,33)
+evenodd1 <- function(p) if(p %% 2 == 0) return("even") else return("odd")
+sapply(v, evenodd1)
+lapply(v, evenodd1)
+```
+
+- apply()는 행렬의 행 또는 열 연산을 할 때 사용
+
+- sapply()는 결과를 최대한 간단한 형태로 리턴
+
+  - 주로 벡터
+
+  - ```R
+    # 리턴결과
+    [1] "even" "odd"  "even" "even" "even" "odd" 
+    ```
+
+- lapply()는 결과를 리스트로 리턴
+
+  - ```R
+    # 리턴결과
+    [[1]]
+    [1] "even"
+    
+    [[2]]
+    [1] "odd"
+    ...
+    [[6]]
+    [1] "odd"
+    ```
+
+
+
+### 

@@ -690,19 +690,32 @@ v <- c(10,11,20,22,30,33)
 evenodd1 <- function(p) if(p %% 2 == 0) return("even") else return("odd")
 sapply(v, evenodd1)
 lapply(v, evenodd1)
-
-evenodd2 <- function(p) {
-  if(p %% 2 == 0) 
-    r <- "even" 
-  else 
-    r <- "odd"
-  return(r)
-}
-sapply(v, evenodd2)
-lapply(v, evenodd2)
 ```
 
 - apply()는 행렬의 행 또는 열 연산을 할 때 사용
+
+- sapply()는 결과를 최대한 간단한 형태로 리턴
+
+  - 주로 벡터
+
+  - ```R
+    # 리턴결과
+    [1] "even" "odd"  "even" "even" "even" "odd" 
+    ```
+
+- lapply()는 결과를 리스트로 리턴
+
+  - ```R
+    # 리턴결과
+    [[1]]
+    [1] "even"
+    
+    [[2]]
+    [1] "odd"
+    ...
+    [[6]]
+    [1] "odd"
+    ```
 
 
 
