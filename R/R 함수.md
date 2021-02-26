@@ -282,6 +282,36 @@ apply(x2, 2, mean)
 apply(x2, 2, sum) # colSums(x2)
 ```
 
+#### sapply(v, 함수), lapply(v, 함수)
+
+> 함수를 벡터의 개수만큼 실행하여 리턴
+
+##### sapply()
+
+- 가급적 심플하게 리턴
+  - 벡터, 리스트 등
+
+##### lapply()
+
+- 반드시 list객체 리턴
+
+```R
+v <- c(10,11,20,22,30,33)
+evenodd1 <- function(p) if(p %% 2 == 0) return("even") else return("odd")
+sapply(v, evenodd1)
+lapply(v, evenodd1)
+
+evenodd2 <- function(p) {
+  if(p %% 2 == 0) 
+    r <- "even" 
+  else 
+    r <- "odd"
+  return(r)
+}
+sapply(v, evenodd2)
+lapply(v, evenodd2)
+```
+
 
 
 ## 배열(Array)
@@ -802,6 +832,18 @@ f5<- function(...) { # 가변인수
     data <- c(...)
     print(length(data))
 }
+
+makeVector <- function(type, ...) { # 가변인자는 일반 매개변수 뒤에 작성
+  return(switch(EXPR=type, paste0("A", c(...)), 
+                paste0("B", c(...)), 
+                paste0("C", c(...)), 
+                paste0("D", c(...))))
+}
+
+makeVector(type=1,1,2,3,4,5)
+makeVector(2,100,200,300)
+makeVector(3,10,20,30,40,50,60,70,80,90)
+makeVector(4,111,222,333,444,555)
 ```
 
 
