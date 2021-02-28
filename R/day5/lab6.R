@@ -104,7 +104,7 @@ myExpr(mean)
 # 문제6
 createVector1 <- function(...){
   v <- c(...)
-  if(length(v) == 0)
+  if(is.null(v))
     result <- NULL
   else if(any(is.na(v)))
     result <- NA
@@ -121,9 +121,9 @@ createVector1(1,2,3,4)
 
 # 문제7
 createVector2 <- function(...){
-  v <- c(...)
+  v <- list(...)
   nums <- NULL;chars<-NULL; logs<-NULL
-  if(length(v)==0)
+  if(is.null(c(...)))
     result <- NULL
   else{
     for(data in v){
@@ -138,7 +138,4 @@ createVector2 <- function(...){
 createVector2()
 createVector2(1,2,3,4,5,'abc', T, F, T, '가나다')
 createVector2(1,2,3)
-
-
-
 
