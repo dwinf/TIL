@@ -17,25 +17,67 @@ countEvenOdd <- function(num){
 }
 countEvenOdd(c(1,2,3,4,5))
 countEvenOdd(c('abc', 12, 124))
+countEvenOdd(c(1,4,3))
 
+
+#문제1-1
+countEvenOdd <- function(vt){
+  if(!is.numeric(vt) || !is.vector(vt)) return()
+  else {
+    total <- length(vt)
+    even <- 0
+    for (i in 1:total) {
+      if(vt[i]%%2==0){
+        even <- even+1
+        #odd <- total-even
+      }
+    }
+    odd <- total-even
+    result <- list(even = even, odd=odd)
+    return(result)
+  }
+}
 
 
 # 문제2
-vmSum <- function(...){
-  numv <- c(...)
+vmSum <- function(numv){
   if(is.vector(numv) && !is.list(numv))
-    if(!is.numeric(numv))
-      result <- "숫자 벡터를 전달하세요"
+    if(!is.numeric(numv)){
+      print("숫자 벡터를 전달하세요")
+      result <- 0
+    }
     else
       result <- sum(numv)
   else
     result <- "벡터만 전달하세요"
   return(result)
 }
-vmSum(1,2,3)
-vmSum(12, "abc", 21)
+vmSum(c(1,2,3))
+vmSum(c(12, "abc", 21))
 vmSum(function(){})
+vmSum(c('가', '1'))
+vmSum(data.frame(1,2,3))
 
+
+
+# 문제2-1
+vmSum <- function(vt){
+  if(!is.vector(vt) || is.list(vt)){
+    result <- "벡터만 전달하세요"
+    return(result)
+  }
+  else if(!is.numeric(vt)){
+    print("숫자 벡터를 전달하세요")
+    return(0)
+  }
+  else
+    return(sum(vt))
+}
+vmSum(c(1,2,3))
+vmSum(c(12, "abc", 21))
+vmSum(function(){})
+vmSum(c('가', '1'))
+vmSum(data.frame(1,2,3))
 
 
 
@@ -58,6 +100,25 @@ vmSum2(12, "abc", 21)
 vmSum2(function(){})
 
 
+# 문제3-1
+vmSum2 <- function(numv){
+  if(!is.vector(numv) || is.list(numv))
+    stop("벡터만 전달하세요")
+  else if(!is.numeric(numv)){
+      warning("숫자 벡터를 전달하세요") 
+      result <- 0
+    }
+  else
+    result <- sum(numv)
+  return(result)
+}
+vmSum2(c(1,2,3))
+vmSum2(c(12, "abc", 21))
+vmSum2(function(){})
+vmSum2(c('가', '1'))
+vmSum2(data.frame(1,2,3))
+
+
 
 # 문제4
 mySum <- function(numv){
@@ -71,6 +132,7 @@ mySum <- function(numv){
   if(any(is.na(numv))){
     warning("NA값은 최저값으로 변경하여 처리합니다")
     numv[is.na(numv)] <- min(numv[!is.na(numv)])
+    #numv[is.na(numv)] <- min(numv, na.rm=T)
   }
   for (i in numv) {
     if(i%%2 == 0)
@@ -93,11 +155,15 @@ mySum(NULL)
 myExpr <- function(x){
   if(!is.function(x))
     stop("수행하지 않습니다.")
-  nums <- sample(1:45, 6)
-  return(x(nums))
+  else
+    #nums <- sample(1:45, 6)
+    return(x(sample(1:45, 6)))
 }
 myExpr(sum)
+myExpr(base::sum) # sum이라는 변수를 만들었다면
 myExpr(mean)
+myExpr(max)
+myExpr(min)
 
 
 
@@ -115,7 +181,8 @@ createVector1 <- function(...){
 createVector1(1,2,3,4,'avc')
 createVector1()
 createVector1('dsds', NA)
-createVector1(1,2,3,4)
+createVector1(1,2,3,4,T)
+createVector1(1,2,3,4,T, "a")
 
 
 

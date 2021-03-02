@@ -182,9 +182,10 @@ for(i in 1:9){
 for(i in 1:9){
   for(j in 1:9){
     if(i*j>30){
-      bb<-T
       break
     } 
+    cat(i,"*",j,"=",i*j,"\t")
+  }
   cat("\n")
 }
     
