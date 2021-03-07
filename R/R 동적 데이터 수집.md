@@ -82,20 +82,24 @@ remDr$open()
 
 
 
-### Selenium 사용
+### (2) Selenium 사용
 
 ```R
 install.packages("RSelenium") # R에서 selenium을 사용하기 위한 패키지 설치
 library(RSelenium)
 
-remDr <- remoteDriver(remoteServerAddr = "localhost" , port = 4445, browserName = "chrome") # Selenium 서버에 접속
-remDr$open() # Selenium 서버에 의해 제어되는 브라우저 기동(크롬)
+# Selenium 서버에 접속
+remDr <- remoteDriver(remoteServerAddr = "localhost" , port = 4445, browserName = "chrome")
+# Selenium 서버에 의해 제어되는 브라우저 기동(크롬)
+remDr$open() 
 
-remDr$navigate("http://www.google.com/") # 지정된 URL 페이지 를 요청하고 랜더링(자바스크립트코드 수행)
+# 지정된 URL 페이지 를 요청하고 랜더링(자바스크립트코드 수행)
+remDr$navigate("http://www.google.com/")
 
+# 태그에 대한 DOM 객체 찾기, 클래스, id, 태그명 등을 통해 검색
 webElem <- remDr$findElement(using = "css selector", "[name = 'q']") # xpath로도 가능
-webElem$sendKeysToElement(list("PYTHON", key = "enter"))
-
+# <input> 태그에 텍스트 입력하고 엔터키 입력을 자동화 하기
+webElem$sendKeysToElement(list("PYTHON", key = "enter")) # 검색
 
 remDr$navigate("http://www.naver.com/")
 
@@ -103,3 +107,68 @@ webElem <- remDr$findElement(using = "css selector", "#query")
 webElem$sendKeysToElement(list("PYTHON", key = "enter"))
 ```
 
+#### 1. findElement
+
+```R
+# 이해를 돕기 위해 간단한 웹페이지를 크롤링하고 스크래핑 함
+url <- "http://unico2013.dothome.co.kr/crawling/tagstyle.html"
+remDr$navigate(url)
+
+#단수형으로 노드 추출 using=css selector 
+one<-remDr$findElement(using='css selector','div') # 노드 한 개 리턴(webElement 객체)
+one$getElementTagName()
+one$getElementText()
+one$getElementAttribute("style")
+
+# 단수형으로 없는 노드 추출
+one<-NULL
+one<-remDr$findElement(using='css selector','p') # 없으면 오류 발생
+
+# 만일 오류 발생을 무시하고 싶어서 사용하지만 소용없음, 외부 라이브러리 사용 때문이라 추정(^^)
+# 없을 수도 있으면 복수형(findElements()) 사용할것(0개 이상을 탐색하기 때문)
+one<-NULL
+try(one<-remDr$findElement(using='css selector','p')) 
+```
+
+- 선택된 태그에 해당하는 객체를 1개 리턴
+- 여러 개라면 첫 번째로 탐색된 객체 리턴
+
+#### 2. findElements
+
+````R
+#복수형으로 노드 추출
+more<-remDr$findElements(using='css selector','div')
+sapply(more, function(x) x$getElementTagName())
+sapply(more, function(x) x$getElementText())
+
+#복수형으로 없는 추출
+more<-remDr$findElements(using='css selector','p') # 없으면 오류가 발생하지 않음 비어있는 리스트 리턴
+print(more)  
+if(length(more) == 0) 
+  cat("<p> 태그는 없슈\n")
+sapply(more, function(x) x$getElementTagName())
+sapply(more, function(x) x$getElementText())
+````
+
+- o개 이상을 탐색해 리턴하기 때문에 없어도 오류발생X
+
+#### 3. clickElement()
+
+```R
+url <- "http://unico2013.dothome.co.kr/crawling/exercise_bs.html"
+remDr$navigate(url)
+
+one<-remDr$findElement(using='css selector','a:nth-of-type(4)')
+one$getElementTagName()
+one$getElementText()
+one$clickElement()
+
+url <- "http://unico2013.dothome.co.kr/crawling/exercise_bs.html"
+remDr$navigate(url)
+
+one<-remDr$findElement(using='css selector','a:nth-of-type(3)')
+one$getElementTagName()
+one$getElementText()
+remDr$executeScript("arguments[0].click();",list(one)); # 목록을 리스트로 줘야하기 때문에 형변환
+# 자바스크립트를 이용해 클릭, clickElement()가 안될 때 사용
+```
