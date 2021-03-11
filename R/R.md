@@ -59,7 +59,7 @@ LETTERS	#영대문자
 - 함수 정의와 활용
 - 파일에 있는 데이터 읽기 : csv, xml, json, xlsx, txt
 
-![image-20210222113042796](https://user-images.githubusercontent.com/73389275/110779134-873c7380-82a6-11eb-869d-264392d3a18d.png)
+![image-20210222113042796](https://user-images.githubusercontent.com/73389275/110780624-3e85ba00-82a8-11eb-99c2-f2db60bdd044.png)
 
 ### 1. R의 자료형
 
@@ -113,7 +113,7 @@ LETTERS	#영대문자
 
  벡터(팩터), 행렬, 배열, 데이터프레임(정형데이터에 주로 이용), 리스트
 
-![image-20210222131133618](https://user-images.githubusercontent.com/73389275/110779234-a3401500-82a6-11eb-904d-709b7381f815.png)
+![image-20210222131133618](https://user-images.githubusercontent.com/73389275/110780681-4c3b3f80-82a8-11eb-831c-3c091c4399c2.png)
 
 - 벡터(1차원), 행렬(2차원), 배열(1차원 이상) - 같은 타입의 데이터만 저장 가능
 - 스칼라는 벡터로 인식되어 사실상 존재하지 않는다.
