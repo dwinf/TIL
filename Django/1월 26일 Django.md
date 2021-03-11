@@ -113,7 +113,7 @@ http://www.domain.com:1234/path/to/resource?a=b&x=y
 
 장고 프레임 워크에서는 View를 Template, Controller는 View라고 표현하며, MVC를 MTV라고 한다. Model은 데이터베이스에 저장되는 데이터의 영역, Template은 사용자에게 보여지는 영역, View는 실질적으로 프로그램 로직이 동작하여 적절한 처리 결과를 Template에게 전달하는 역할을 수행한다
 
-![image-20210126142215695](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210126142215695.png)
+![image-20210126142215695](https://user-images.githubusercontent.com/73389275/110779862-6294cb80-82a7-11eb-8eb3-d4a5bdde3e2b.png)
 
 - urls.py - 프로젝트 폴더(메인)와 앱폴더(서브)
 
