@@ -67,7 +67,7 @@
 - 개체를 테이블로 사용하고 개체들 간의 공통 속성을 이용해 서로 연결
 - 자료의 구조가 단순한 업무에 적합
 
-![image-20210201101726492](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210201101726492.png)
+![image-20210201101726492](https://user-images.githubusercontent.com/73389275/110780439-08e0d100-82a8-11eb-9306-60876110fe50.png)
 
 - 테이블 : 릴레이션 혹은 엔티티, 열(Column)과 행(Row)으로 구성됨 
 - 필드 : 속성 혹은 컬럼, 열에 해당, 데이터 값을 기억하는 기억 단위 
@@ -76,7 +76,7 @@
 - **기본 키** : 후보 키 중에서 대표로 선정된 키 (= **primary key**)
 - 외래 키 또는 **참조 키** : 관계가 설정된 다른 테이블의 기본 키를 참조하는 키
 
-![image-20210201102032080](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210201102032080.png)
+![image-20210201102032080](https://user-images.githubusercontent.com/73389275/110780469-11d1a280-82a8-11eb-9355-f4ddf87431a4.png)
 
 
 
