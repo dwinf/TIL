@@ -73,7 +73,7 @@ json 객체는 파이썬에서 딕셔너리가 된다.
 
 #### 형식 비교
 
-![image-20210129101427225](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210129101427225.png)
+![image-20210129101427225](https://user-images.githubusercontent.com/73389275/110780075-a38ce000-82a7-11eb-86d6-c798602fd3cb.png)
 
 
 
@@ -85,7 +85,7 @@ json 객체는 파이썬에서 딕셔너리가 된다.
 
 ##### AJAX 웹 통신
 
-![image-20210129104225845](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210129104225845.png)
+![image-20210129104225845](https://user-images.githubusercontent.com/73389275/110780094-a7206700-82a7-11eb-830e-25ac62e0909d.png)
 
 - Ajax Engine을 이용해 실시간으로 갱신이 가능하도록 함
 - 서버가 응답을 하는 동안 클라이언트는 다른 일을 할 수 있다.

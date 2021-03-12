@@ -2,7 +2,7 @@
 
 
 
-# ![image-20210127090440191](C:\Users\dwinf\AppData\Roaming\Typora\typora-user-images\image-20210127090440191.png)
+![image-20210127090440191](https://user-images.githubusercontent.com/73389275/110779957-80fac700-82a7-11eb-89f2-cef0ea63b93f.png)
 
  웹 클라이언트(브라우저)의 요청을 받아 장고에서 MTV 모델에 따라 처리하는 과정
 
