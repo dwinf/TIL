@@ -52,3 +52,87 @@ Hadley Wickham 교수에 의해 2005년부터 개발되고 있으며 ‘Grammar 
 
 
 ## 2. ggplot2 패키지로 그래프 그리는 과정
+
+#### 1) 배경 설정하기
+
+- x축 displ, y축 hwy로 지정해 배경 생성
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy))
+```
+
+#### 2) 그래프 추가하기
+
+- 배경에 산점도 추가
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point()
+```
+
+#### 3) 축 범위를 조정하는 설정 추가하기
+
+- x축 범위 3~6으로 지정
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy)) + 
+geom_point() + xlim(3, 6)
+```
+
+#### 4) 축 범위를 조정하는 설정 추가하기
+
+- x축 범위 3~6, y축 범위 10~30으로 지정
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy)) +   
+geom_point() +  xlim(3, 6) +  ylim(10, 30)
+```
+
+#### 5) 칼라와 점모양 추가하기
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point(shape=21, size=6, colour="blue") + xlim(3, 6) + ylim(10, 30) 
+```
+
+#### 6) Drv 변수별로 칼라 성정
+
+```R
+ggplot(data = mpg, aes(x = displ, y = hwy, col=drv)) + geom_point()
+```
+
+
+
+### 다양한 그래프
+
+```R
+df_mpg <- mpg %>% group_by(drv) %>% summarise(mean_hwy = mean(hwy))
+
+# 집계 막대 그래프(미리 계산해 전달)
+ggplot(data = df_mpg, aes(x = drv, y = mean_hwy)) + geom_col()
+
+# 빈도 막대 그래프(알아서 개수를 세어 그림)
+ggplot(data = mpg, aes(x = drv)) + geom_bar()
+
+# 선 그래프
+ggplot(data = economics, aes(x = date, y = unemploy)) + geom_line()
+
+# 상자 그림
+ggplot(data = mpg, aes(x = drv, y = hwy)) + geom_boxplot()
+```
+
+
+
+## 3. 인터랙티브 그래프
+
+> 그래프가 plot 창이 아닌 Viewer 창에 그려짐( == html로 그려진다.)
+
+```R
+install.packages("plotly")
+library(plotly)
+
+p <- ggplot(data = mpg, aes(x = displ, y = hwy, col = drv)) + geom_point()
+ggplotly(p)
+
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) + 
+  geom_bar(position = "dodge")
+ggplotly(p)
+```
