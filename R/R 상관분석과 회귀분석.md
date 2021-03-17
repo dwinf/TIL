@@ -153,3 +153,76 @@ predict.lm(model, newdata = data.frame(age = 100))
 plot(Orange$age, Orange$circumference)
 abline(coef(model))
 ```
+
+
+
+
+
+
+
+
+
+
+
+-------
+
+--------
+
+------
+
+---
+
+---
+
+
+
+### 설명 변수 선택법
+
+> 다중선형회귀 모델에서 종속변수에 영향을 주는 설명 변수를 선택하는 방법
+
+- 전진 선택법, 후진 제거법, 단계적 방법
+
+```R
+step(model, direction=”forward|backward|both
+```
+
+- 고려하는 독립(설명)변수 모두를 회귀 모형에 포함하는 경우 독립변수들 중 일부만을 포함하는 회귀모형에 비해서 결정계수의 값이 항상 크므로 설명력을 최대화시킬 수 있다.
+- 반면에 독립변수들간의 상관관계가 커져서 생기는 다중공선성의 문제에 직면하는 경우가 많고, 따라서 모형의 안정성과 신뢰성에 의문의 생길 수 있다.
+  - 다중공선성 : 다중 선형 회귀에서 독립변수들간에 강한 선형관계가 있을 때
+  - 의심이 가는 독립변수들만을 가지고 회귀분석을 한 다음 `vif()` 함수로 분산팽창 계수를 확인한다. 10이 넘는 변수는 다중공선성이 존재한다고 간주한다.
+
+![image](https://user-images.githubusercontent.com/73389275/111396391-4f985600-8702-11eb-8671-af496e35dfd0.png)
+
+
+
+```R
+tadata <- read.csv("data/TAccident.csv")
+start.lm <- lm(Y~1, data=tadata)
+full.lm <- lm(Y~., data=tadata)
+```
+
+#### 전진선택법
+
+```R
+Y ~ 1
+Y ~ X9
+Y ~ X9 + X1
+Y ~ X9 + X1 + X4
+Y ~ X9 + X1 + X4 + X8
+Y ~ X9 + X1 + X4 + X8 + X12
+```
+
+#### 후진 제거법
+
+```R
+Y ~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10 + X11 + X12 + X13
+Y ~ X1 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10 + X11 + X12 + X13
+Y ~ X1 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X11 + X12 + X13
+Y ~ X1 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X12 + X13
+Y ~ X1 + X3 + X4 + X6 + X7 + X8 + X9 + X12 + X13
+Y ~ X1 + X3 + X4 + X7 + X8 + X9 + X12 + X13
+Y ~ X1 + X3 + X4 + X8 + X9 + X12 + X13
+Y ~ X1 + X3 + X4 + X8 + X9 + X12
+Y ~ X1 + X4 + X8 + X9 + X12
+```
+
