@@ -277,31 +277,121 @@ print(df3)
 
 ## 3. 데이터 변환
 
+- 단위 선택, 대소문자 구분, 약칭 등 다양한 형태로 표현
+- 동일한 대상을 다르게 표현할 경우 분석의 정확도가 떨어질 수 있기 때문에 변환해줄 필요가 있다.
 
+- auto-mpg.csv를 통해 알아봄
 
 
 
 ### 3-1 단위 환산
 
+- mpg의 경우 mile per gallon으로 한국에서는 쓰지 않는 단위
+  - 한국에서 쓰는 단위로 바꿔줄 필요가 있음(km/L)
+
 
 
 ### 3-2 자료형 변환
+
+- housepower의 경우 엔진 출력의 크기를 나타내기 때문에 숫자형이 적절
+  - 데이터 중간 '? '값 때문에 문자열로 인식됨
+  - **np.nan**으로 누락 데이터를 nan으로 변경
+  - **astype()**으로 타입 변환
+
+```python
+import numpy as np
+df['horsepower'].replace('?', np.nan, inplace=True)      # '?'을 np.nan으로 변경
+df.dropna(subset=['horsepower'], axis=0, inplace=True)   # 누락데이터 행을 삭제
+df['horsepower'] = df['horsepower'].astype('float')      # 문자열을 실수형으로 변환
+```
+
+- origin의 경우 국가를 나타내지만 1, 2, 3으로 정수형 데이터로 이루어짐
+  - 국가 이름으로 바꿔주는 것이 적절
+  - 3개의 국가을 고유값으로 반복하기 때문에 문자열보다 범주형(category)이 적절
+
+```python
+# origin 열의 고유값 확인
+print(df['origin'].unique())
+# 정수형 데이터를 문자형 데이터로 변환 
+df['origin'].replace({1:'USA', 2:'EU', 3:'JAPAN'}, inplace=True)
+
+# origin 열의 고유값과 자료형 확인
+print(df['origin'].unique())
+print(df['origin'].dtypes) 
+print('\n')
+```
 
 
 
 ## 4. 범주형(카테고리) 데이터 처리
 
-
-
 ### 4-1 구간 분할
+
+- 데이터 분석 알고리즘에 따라서 연속 데이터를 그대로 사용하기 보다는 일정한 구간으로 나눠서 분석하는 것이 효율적인 경우가 있음
+- **구간 분할** : 연속 변수를 일정한 구간으로 나누고, 각 구간을 범주형 이산 변수로 변환하는 과정
+- 판다스 함수 `cut()`을 이용해 연속 데이터를 여러 구간으로 나누고 범주형 데이터로 변환 가능
+
+```python
+bin_drivers = np.histogram(df['열 이름'], bins=3)
+bin_names = ['범주1', '범주2', '범주3'] # 원하는 이름으로 지정
+df['새로운 열'] = pd.cut(x=df['열 이름'], # 데이터 배열
+				   bins=bin_drivers, # 경계값 리스트
+				   labels=bin_names, # bin 이름
+				   include_lowest=True) # 첫 경계값 포함
+```
 
 
 
 ### 4-2 더미 변수
 
+- 카테고리를 나타내는 범주형 데이터를 회귀분석 등 머신러닝 알고리즘에 바로 사용할 수 없을 수 있음
+- 컴퓨터가 인식 가능한 입력값으로 변환해야 함
+- 이럴 때 숫자 0 또는 1로 표현되는 **더미 변수**를 사용함.
+  - 0과 1은 어떤 특성이 있는지 없는지 여부만을 표시함
+- `get_dummies()` 함수 사용
+  - 범주형 변수의 모든 고유값을 각각 새로운 더미 변수로 변환
+  - 각 더미 변수가 본래 속해 있던 행에는 `1`, 속하지 않았던 다른 행에는 `0`이 입력됨
+
+```python
+bin_drivers = np.histogram(df['열이름'], bins=3)
+bin_names = ['범주1', '범주2', '범주3'] # 원하는 이름으로 지정
+df['새로추가열'] = pd.cut(x=df['열이름'], # 데이터 배열
+				   bins=bin_drivers, # 경계값 리스트
+				   labels=bin_names, # bin 이름
+				   include_lowest=True) # 첫 경계값 포함
+dummis = pd.gt_dummies(df['새로추가열'])
+```
+
 
 
 ## 5. 정규화
+
+- 각 변수에 들어있는 숫자 데이터의 상대적 크기 차이 때문에 머신러닝 분석 결과가 달라질 수 있음
+  - 상대적으로 큰 값을 가지는 변수가 더 큰 영향력을 가진다.
+- 따라서 숫자 데이터의 상재덕인 크기 차이를 제거할 필요가 있음
+- **정규화** : 각 열(변수)에 속하는 데이터 값을 동일한 크기 기준으로 나눈 비율로 나타내는 것
+  - **0~1** 또는 **-1 ~ 1**
+
+#### 정규화 방법 1
+
+- 각 열의 데이터를 해당 열의 최대값으로 나누는 방법
+  - 0 이상 1 이하
+
+```python
+# horsepower 열의 최대값의 절대값으로 모든 데이터를 나눠서 저장
+f.horsepower = df.horsepower / abs(df.horsepower.max()) 
+```
+
+#### 정규화 방법 2
+
+- 각 열의 데이터 중 최대값과 최소값을 뺀 값으로 나누는 방법
+
+```python
+# horsepower 열의 최대값의 절대값으로 모든 데이터를 나눠서 저장
+min_x = df.horsepower - df.horsepower.min()
+min_max = df.horsepower.max() - df.horsepower.min()
+df.horsepower = min_x / min_max
+```
 
 
 
