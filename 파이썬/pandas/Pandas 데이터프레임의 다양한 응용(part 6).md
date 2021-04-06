@@ -1,8 +1,4 @@
-# Pandas 데이터프레임의 다양한 응용
-
-> part 6
-
-
+# Pandas 데이터프레임의 다양한 응용(part 6)
 
 ## 1. 함수 매핑
 
@@ -403,28 +399,193 @@ print(df_isin.head())
 
 ### 4-3 데이터프레임 결합
 
+- `join()` 메소드 사용
+  - merge() 함수를 기반으로 만들어져 기본 작동 방식이 비슷
+- join() 메소드는 두 데이터프레이므이 행 인덱스를 기준으로 결합하는 점에서 merge()와 다름
+- 하지만 **on=keys** 옵션으로 행 인덱스가 아닌 열을 기준으로 결합할 수 있다.
 
-
-
+- **how=left** 옵션이 기본값
+  - right, inner, outer
 
 
 
 ## 5. 그룹 연산
 
+> 복잡한 데이터는 어떤 기준에 따라 여러 그룹으로 나워서 관찰하는 것도 좋은 방법이다.
+
+
+
 ### 5-1 그룹 객체 만들기(분할 단계)
+
+- `groupby(기준 열)` : 열을 기준으로 데이터프레임을 분할하여 그룹 객체를 반환
+  - 기준 열은 1개도 가능하고, 여러 열을 리스트로 입력할 수 있다.
+
+```python
+import pandas as pd
+import numpy as np
+df = pd.DataFrame({
+    'city': ['부산', '부산', '부산', '부산', '서울', '서울', '서울'],
+    'fruits': ['apple', 'orange', 'banana', 'banana', 'apple', 'apple', 'banana'],
+    'price': [100, 200, 250, 300, 150, 200, 400],
+    'quantity': [1, 2, 3, 4, 5, 6, 7]
+})
+# 부산과 서울로 나위어 연산
+df.groupby('city')
+df.groupby('city').mean()
+df.groupby('city').agg('mean')
+df.groupby('city').transform('mean') # 부산에 속하면 부산의 평균이 행마다 출력
+df.groupby('city').agg(['mean', 'max', 'min'])
+
+df.groupby(['city', 'fruits']).mean()
+df.groupby(['fruits', 'city']).mean()
+df.groupby('city').get_group('부산')
+df.groupby(['city', 'fruits']).get_group(('부산', 'orange'))
+
+df.groupby('city').size()
+df.groupby('city').size()['부산']
+df.groupby('city').count()
+
+len(df.groupby('city')) # 2
+len(df.groupby(['city', 'fruits'])) # 5
+```
 
 
 
 ### 5-2 그룹 연산 메소드(적용-결합 단계)
 
+- `group.std()` : 각 그룹의 표준편차 집계
+  - mean(), max(), min(), sum(), count(), size(), var(), std(), describe(), info(), first(), last() 등 기본 집계 합수
 
+- `group.agg(매핑 함수)` : 사용자 정의 함수를 그룹 객체에 적용
+
+- `group.agg([함수1, 함수2, 함수3, ...])` : 모든 열에 여러 함수 매핑
+
+- `group.agg({'열1' : 함수1, '열2' : 함수2, ...})` : 각 열마다 다른 함수 매핑
+
+- `group.transform(매핑 함수)` : 그룹별로 구분하여 각 원소에 함수를 적용하지만 그룹별 집계가 아닌 각 원소의 본래 행 인덱스와 열 이름을 기준으로 연산 결과 리턴
+
+- `group.filter(조건식 함수)` : 조건식을 만족하는 그룹만 남김
+
+- `group.apply(매핑 함수)` : 객체의 개별 원소를 특정 함수에 일대일로 매핑
 
 
 
 ## 6. 멀티 인덱스
 
+> 그룹 객체를 만들 때 이미 봤었음
 
+- groupby() 메소드에 여러 열을 리스트 형태로 전달하면 각 열들이 다중으로 행 인덱스를 구성
+
+```python
+# 예제 6-19
+import pandas as pd
+import seaborn as sns
+
+# titanic 데이터셋에서 age, sex 등 5개 열을 선택하여 데이터프레임 만들기
+titanic = sns.load_dataset('titanic')
+df = titanic.loc[:, ['age','sex', 'class', 'fare', 'survived']]
+
+# class 열, sex 열을 기준으로 분할
+grouped = df.groupby(['class', 'sex']) 
+print(type(grouped)) # 10-26추가함
+
+# 그룹 객체에 연산 메서드 적용
+gdf = grouped.mean()
+print(gdf)
+print(type(gdf))
+print(gdf.index)
+
+# class 값이 First인 행을 선택하여 출력
+print(gdf.loc['First'])
+
+# class 값이 First이고, sex 값이 female인 행을 선택하여 출력
+print(gdf.loc[('First', 'female')])
+
+# sex 값이 male인 행을 선택하여 출력
+print(gdf.xs('male', level='sex'))
+```
 
 
 
 ## 7. 피벗
+
+- `pivot_table()` 함수는 엑셀에서 사용하는 피벗테이블과 비슷한 기능을 처리한다.
+- 피벗테이블을 구성하는 4가지 요소(**행 인덱스, 열 인덱스, 데이터 값, 데이터 집계 함수**)에 적용할 데이터프레임의 열을 각각 지정하여 함수의 인자로 전달
+
+```python
+# 예제 6-20
+# 라이브러리 불러오기
+import pandas as pd
+import seaborn as sns
+
+# IPyhton 디스플레이 설정 변경 
+pd.set_option('display.max_columns', 10)    # 출력할 최대 열의 개수
+pd.set_option('display.max_colwidth', 20)    # 출력할 열의 너비
+
+# titanic 데이터셋에서 age, sex 등 5개 열을 선택하여 데이터프레임 만들기
+titanic = sns.load_dataset('titanic')
+df = titanic.loc[:, ['age','sex', 'class', 'fare', 'survived']]
+print(df.head())
+print('\n')
+
+# 행, 열, 값, 집계에 사용할 열을 1개씩 지정 - 평균 집계
+pdf1 = pd.pivot_table(df,              # 피벗할 데이터프레임
+                     index='class',    # 행 위치에 들어갈 열
+                     columns='sex',    # 열 위치에 들어갈 열
+                     values='age',     # 데이터로 사용할 열
+                     aggfunc='mean')   # 데이터 집계 함수
+
+print(pdf1.head())
+print('\n')
+
+# 행, 열, 값에 사용할 열을 2개 이상 지정 가능 - 평균 나이, 최대 요금 집계
+pdf3 = pd.pivot_table(df,                       # 피벗할 데이터프레임
+                     index=['class', 'sex'],    # 행 위치에 들어갈 열
+                     columns='survived',        # 열 위치에 들어갈 열
+                     values=['age', 'fare'],    # 데이터로 사용할 열
+                     aggfunc=['mean', 'max'])   # 데이터 집계 함수
+
+# IPython Console 디스플레이 옵션 설정
+pd.set_option('display.max_columns', 10)        # 출력할 열의 개수 한도
+print(pdf3.head())
+print('\n')
+
+# 행, 열 구조 살펴보기
+print(pdf3.index)
+print(pdf3.columns)
+print('\n')
+
+# xs 인덱서 사용 - 행 선택(default: axis=0)
+print(pdf3.xs('First'))              # 행 인덱스가 First인 행을 선택 
+print('\n')
+print(pdf3.xs(('First', 'female')))   # 행 인덱스가 ('First', 'female')인 행을 선택
+print('\n')
+print(pdf3.xs('male', level='sex'))  # 행 인덱스의 sex 레벨이 male인 행을 선택
+print('\n')
+print(pdf3.xs(('Second', 'male'), level=[0, 'sex']))  # Second, male인 행을 선택
+print('\n')
+
+# xs 인덱서 사용 - 열 선택(axis=1 설정)
+print(pdf3.xs('mean', axis=1))        # 열 인덱스가 mean인 데이터를 선택 
+print('\n')
+print(pdf3.xs(('mean', 'age'), axis=1))   # 열 인덱스가 ('mean', 'age')인 데이터 선택
+print('\n')
+print(pdf3.xs(1, level='survived', axis=1))  # survived 레벨이 1인 데이터 선택
+print('\n')
+print(pdf3.xs(('max', 'fare', 0), 
+              level=[0, 1, 2], axis=1))  # max, fare, survived=0인 데이터 선택
+```
+
+
+
+### seaborn 라이브러리를 이용한 시각화
+
+```python
+sns.heatmap(pdf1, annot=True) # annot=annotation
+sns.heatmap(pdf2, annot=True, cmap="PuRd") # cmap = colormap
+sns.heatmap(pdf3, annot=True, fmt='.1f') # fmt = format
+```
+
+- annot=True : 각 cell의 값 표기 유무
+- cmap="PuRd" : 색을 설정
+- fmt='.1f' : 값의 데이터 타입 설정(소수점 1자리까지 표현)

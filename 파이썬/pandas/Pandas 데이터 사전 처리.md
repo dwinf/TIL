@@ -397,7 +397,7 @@ df.horsepower = min_x / min_max
 
 ## 6. 시계열 데이터 처리
 
-
+> Timestamp, period
 
 ### 6-1 다른 자료형을 시계열 객체로 변환
 
