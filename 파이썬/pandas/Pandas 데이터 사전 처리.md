@@ -401,11 +401,46 @@ df.horsepower = min_x / min_max
 
 ### 6-1 다른 자료형을 시계열 객체로 변환
 
+#### (1) 문자열을 Timestamp로 변환
+
+- `to_datetime()` 함수 사용
+  - datetime64로 변환
+
+```python
+df['새로운 열'] = pd.to_datetime(df['바꿀 열'])
+```
+
+- 시간을 행 인덱스로 사용하면 시간 순서에 따라 인덱싱 또는 슬라이싱하기 편함
+
+```python
+df.set_index('datetime 열', inplace=True)
+```
+
+
+
+#### (2) Timestamp를 Period로 변환
+
+- `to_period()` 함수 사용
+  - period로 변환
+- period 객체는 일정한 기간을 나타냄
+- **freq** 옵션으로 기간을 나타냄
+
+```python
+df.to_period(freq='D')
+```
+
+| 옵션 | 설명        | 옵션 | 설명         |
+| ---- | ----------- | ---- | ------------ |
+| D    | day         | B    | business day |
+| W    | week        | H    | hour         |
+| M    | month end   | T    | minute       |
+| MS   | month begin | S    | second       |
+
 
 
 ### 6-2 시계열 데이터 만들기
 
-#### Timestamp 배열
+#### (1) Timestamp 배열
 
 - `date_range()` 함수를 사용해 여러 개의 날짜(Timestamp)가 들어 있는 배열 형태의 시계열 데이터 생성
 - 파이썬의 `range()` 로 숫자 배열을 만드는 함수와 유사
@@ -431,9 +466,20 @@ freq='H'                   	# 기간의 길이 (H: 시간)
 freq='2H'                  	# 기간의 길이 (H: 시간)
 ```
 
-#### period 배열
 
-- 
+
+#### (2) period 배열
+
+- `date_range()` 함수는 여러 개의 기간이 들어 있는 시계열 데이터를 만듦
+
+```python
+pr_m = pd.period_range(start='2019-01-01',     # 날짜 범위의 시작
+                   end=None,                   # 날짜 범위의 끝
+                   periods=3,                  # 생성할 Period 개수
+                   freq='M')                   # 기간의 길이 (M: 월)
+```
+
+- 매개변수명을 주지 않아도 상관 없음
 
 
 
@@ -442,6 +488,7 @@ freq='2H'                  	# 기간의 길이 (H: 시간)
 #### 날짜 데이터 분리
 
 - `to_datetime()` 함수를 사용해 Timestamp로 변환된 데이터프레임에서 연, 월, 일 정보 추출
+- df.**dt.원하는 정보**
 
 ```python
 # 예제 5-19
