@@ -213,7 +213,7 @@ df['embark_town'].fillna(method='ffill', inplace=True)
 print(df['embark_town'][825:830])
 ```
 
-#### 
+
 
 ## 2. 중복 데이터 처리
 
@@ -520,14 +520,12 @@ df.set_index('Date_m', inplace=True)
 print(df.head())
 ```
 
-### 
+
 
 #### 날짜 인덱스 활용
 
 - Timestamp로 구성된 열을 행 인덱스로 지정하면 DatetimeIndex라는 고유 속성으로 변환
 - Period로 구성된 열을 행 인덱스로 지정하면 PeriodIndex라는 고유 속성으로 변환
-
-
 
 ```python
 # 예제 5-20

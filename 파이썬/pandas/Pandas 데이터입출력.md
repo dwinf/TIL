@@ -8,15 +8,15 @@
 
 ### 판다스 데이터 입출력 도구
 
-| File Format     | Reader | Writer |
-| --------------- | ------ | ------ |
-| CSV             | read_  | to_    |
-| JSON            | read_  | to_    |
-| HTML            | read_  | to_    |
-| Local clipboard | read_  | to_    |
-| MS Excel        | read_  | to_    |
-| HDF5 Format     | read_  | to_    |
-| SQL             | read_  | to_    |
+| File Format     | Reader         | Writer       |
+| --------------- | -------------- | ------------ |
+| CSV             | read_csv       | to_csv       |
+| JSON            | read_json      | to_json      |
+| HTML            | read_html      | to_html      |
+| Local clipboard | read_clipboard | to_clipboard |
+| MS Excel        | read_excel     | to_excel     |
+| HDF5 Format     | read_hdf       | to_hdf       |
+| SQL             | read_sql       | to_sql       |
 
 
 

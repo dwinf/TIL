@@ -361,7 +361,7 @@ print(df_isin.head())
 
 
 
-### exam9.ipynp filter부분 살펴보기!!
+### exam9.ipynp `filter`부분 살펴보기!!
 
 
 
@@ -412,8 +412,6 @@ print(df_isin.head())
 ## 5. 그룹 연산
 
 > 복잡한 데이터는 어떤 기준에 따라 여러 그룹으로 나워서 관찰하는 것도 좋은 방법이다.
-
-
 
 ### 5-1 그룹 객체 만들기(분할 단계)
 
@@ -579,6 +577,8 @@ print(pdf3.xs(('max', 'fare', 0),
 
 
 ### seaborn 라이브러리를 이용한 시각화
+
+> heatmap
 
 ```python
 sns.heatmap(pdf1, annot=True) # annot=annotation
