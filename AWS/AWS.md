@@ -7,6 +7,9 @@
 - 우분투(ubuntu) - 리눅스 운영체제
   - **CLI**(Command Line Interface)
   - ls, cat, rm, cd, more 등의 명령어 존재
+
+### AWS 서버에 설치된 개발환경
+
 - **mongodb** - 반정형, 비정형 데이터 저장소 - json 형식
   - pymongo 모듈 설치
 - **mariadb** - 정형데이터 저장소 - DB테이블 - SQL언어
@@ -36,9 +39,12 @@
   
 
 - 리눅스는 다중 사용자 운영체제
+  
   - 윈도우는 단일 사용자 운영체제
 - putty를 통해 서버에 접속
+  
   - 하지만 mobaxterm을 사용하니 jupyter lab 접속하는데 문제 발생
+  - 암호키 등록하니 가능해짐...
 
 
 
