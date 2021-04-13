@@ -1,4 +1,4 @@
-# HeidiSQL을 이용한 마리아DB 사용
+# Maria DB 
 
 > DBMS : DataBase Management System
 
@@ -38,18 +38,35 @@
 #### 기타
 
 - sql에서는 등가연산은 **=** 이다.
-  - select * from t where empno = 100
-  - select * from t where empno != 100
+
+```sql
+select * from t where empno = 100
+select * from t where empno != 100
+```
+
+
+
 - 문자열 데이터값은 단일 인용부호(`''`)만 사용한다.
-  - select * from t where ename = 'King'
+
+```sql
+select * from t where ename = 'King'
+```
+
+
 
 - where 절에 복수의 조건을 주고자 할 경우
-  - select * from t where ename = 'King' **or** ename **=** 'Kang' **or** ename = 'kong'
-  - select * from t where ename **in** ('King', 'Kang', 'kong')
-  - select * from t where ename **like** 'K%'
-    - = 연산자를 사용할 경우 ename이 K%인 직원을 찾는 결과
-    - `%` : 0개 이상의 임의의 문자
-    - `_` : 임의의 한 문자
+
+```sql
+select * from t where ename = 'King' or ename = 'Kang' or ename = 'kong'
+select * from t where ename in ('King', 'Kang', 'kong')
+select * from t where ename like 'K%'
+```
+
+- and/or 조건에서는 and 연산이 우선적으로 적용된다.
+
+- = 연산자를 사용할 경우 ename이 K%인 직원을 찾는 결과
+- `%` : 0개 이상의 임의의 문자
+- `_` : 임의의 한 문자
 
 - VIEW - 가상 테이블
   - 원하는 조건(혹은 자주 사용하는 컬럼, 행)에 맞는 가상의 테이블을 만들어 저장
