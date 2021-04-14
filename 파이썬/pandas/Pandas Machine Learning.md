@@ -62,11 +62,11 @@
 
 > 비선형 회귀분석
 
-
+- Y = aX <sup>2</sup> + bX + c
 
 ### 2-3 다중회귀분석
 
-
+- Y = b + a<sub>1</sub>X<sub>1</sub> + a<sub>2</sub>X<sub>2</sub> + ... + a<sub>n</sub>X<sub>n</sub>
 
 
 
