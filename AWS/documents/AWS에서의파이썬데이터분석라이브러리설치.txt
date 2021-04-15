@@ -1,0 +1,42 @@
+# 서버관리를 맡은 교육생들은 putty 를 기동시킨 후에 
+#  login 프롬프트가 출력되면 ubuntu 로 로그인합니다.
+
+
+# 기본 가상환경 활성화
+conda activate 
+
+# 여기부터가 패키지 설치
+pip install pyspark
+pip install findspark
+pip  install  konlpy
+pip install pymongo
+pip install pymysql
+conda install matplotlib
+conda install pandas
+conda install seaborn
+pip install folium
+conda install scikit-learn
+conda install xlrd
+conda install -c conda-forge googlemaps
+conda install openpyxl
+conda install opencv
+pip install opencv-python
+conda install -c conda-forge statsmodels 
+pip  install  konlpy
+pip install wordcloud
+pip install nltk
+pip install hgtk
+pip install networkx
+pip install apyori
+pip install mlxtend
+conda install requests
+conda install PIL
+conda install bs4
+conda install selenium
+conda install lxml
+conda install html5lib
+
+# 주피터랩 기동 화면
+jupyter lab --ip=0.0.0.0 --no-browser --port=개인포트번호
+
+커널은 Python 3 을 사용합니다.
