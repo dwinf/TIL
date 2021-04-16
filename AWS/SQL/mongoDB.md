@@ -50,3 +50,93 @@
 - 시스템이 커져가면서 **Scale-Out**의 형태로 증설
   - 고성능의 DB를 갖추는 게 아니라 여러 DB 시스템으로 추가
 - Scale-Up이 무제한적으로 늘려갈 수 없는 것과 비교해 장점
+
+
+
+## AWS의 MongoDB 접속
+
+> 파이썬 환경에서 MongoDB를 사용하기 위해선 pymongo가 설치되어 있어야 한다.
+
+#### AWS 서버의 MongoDB 접속
+
+```python
+from pymongo import MongoClient 
+my_client = MongoClient("mongodb://팀서버IP주소:27017/") # 팀단위 IP 주소로 수정 부탁해요
+```
+
+
+
+#### book 컬렉션의 도큐먼트 추출
+
+```python
+my_doc = my_client['testdb_리눅스개인계정']['book'].find()
+for x in my_doc: 
+   print(x)
+```
+
+
+
+### 데이터베이스 생성/추출
+
+```python
+mydb = my_client['리눅스개인계정db']   # 본인 계정명(labXXdb)으로 수정할것
+mycol = mydb['customers'] 
+```
+
+- `insert_one()` : 데이터베이스에 도큐먼트 삽입
+
+
+
+#### 해당 컬렉션(테이블)에 데이터 삽입하기
+
+```python
+x = mycol.insert_one({"name":"dooly", "address":"SSangmun-dong, Seoul"}) 
+
+my_dict = [{"name":"ddochi", "address":"Seocho-dong, Seoul"}, 
+                  {"name":"dounar", "address":"Samsung-dong, Seoul"}, 
+                  {"name":"heedong", "address":"SSangmun-dong, Seoul"}] 
+x = mycol.insert_many(my_dict) 
+```
+
+
+
+#### 해당 컬렉션(테이블) 데이터 출력하기
+
+```python
+x = mycol.find_one() # 하나만
+
+my_doc = mycol.find() # 모든 데이터
+for x in my_doc: 
+   print(x)
+```
+
+
+
+#### 열 기준 정렬해 출력하기
+
+```python
+my_doc = mycol.find().sort("name") # 오름차순
+for x in my_doc: 
+my_doc = mycol.find().sort("name", -1) # 내림차순
+for x in my_doc: 
+    print(x)
+```
+
+
+
+#### 검색
+
+```python
+my_query = {"address":"SSangmun-dong, Seoul"} 
+my_doc = mycol.find(my_query) 
+for x in my_doc: 
+    print(x)
+```
+
+
+
+#### 연결 종료
+
+```python
+my_client.close()
+```
