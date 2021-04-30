@@ -89,15 +89,15 @@
 
 ### 3-2 SVM
 
-> Support Vector Machine
+> Support Vector Machie
+
+- 
 
 
 
 ### 3-3 Decision Tree
 
-> 의사결정 나무
-
-
+- 
 
 
 
