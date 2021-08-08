@@ -79,7 +79,7 @@ $ git log
 
 ```sh
 $ git config --global user.name "DaeChan Kim"
-$ git config --globla user.email "dwinf88@gmail.com"
+$ git config --global user.email "dwinf88@gmail.com"
 ```
 
 
