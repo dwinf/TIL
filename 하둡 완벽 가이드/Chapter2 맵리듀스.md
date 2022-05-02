@@ -7,3 +7,7 @@
 
 #### 2.1.1 데이터 포맷
 [국립기후자료센터](www.ncdc.noaa.gov)의 데이터 이용
+```python
+import pandas as pd
+
+```
