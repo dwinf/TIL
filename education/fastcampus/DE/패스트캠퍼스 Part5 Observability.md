@@ -108,7 +108,7 @@ Observability 가 가능하기 위해서는 세가지 성격의 데이터가 필
 	- 사용하는 프레임워크 레벨에서 진단이 필요한 정보
 	- 내 어플리케이션의 로직이나 상태를 확인하기 위한 정보
 4. 인프라 환경 정보
-	- 리소스가 부족 / 시스템이 운영체제나 machine 과 버전이 안맞거나 crash 가 나는 것
+	- 리소스가 부족 / 시스템이 운영체제나 machine 과 버전이 안 맞거나 crash 가 나는 것
 
 ---
 
@@ -123,7 +123,7 @@ Observability 가 가능하기 위해서는 세가지 성격의 데이터가 필
 - 필요에 따라 적합한 방식을 사용하는 것이 바람직하다.
 
 ## Prometheus 설치
-> [공식 매뉴얼](https://prometheus.io/docs/prometheus/latest/getting_started/)
+> [매뉴얼 참고](https://prometheus.io/docs/prometheus/latest/getting_started/)
 ### 요약
 ```bash
 # 설치파일 다운로드
@@ -289,7 +289,7 @@ mv grafana-9.3.1 grafana
 # prometheus 실행
 ./bin/grafana-server
 ```
-Grafana는 metadata 저장소로 다음 데이터베이스를 필요로한다.
+Grafana는 metadata 저장소로 다음 데이터베이스를 필요로 한다.
 - [SQLite 3](https://www.sqlite.org/index.html)
 - [MySQL 5.7+](https://www.mysql.com/support/supportedplatforms/database.html)
 - [PostgreSQL 10+](https://www.postgresql.org/support/versioning/)
@@ -319,13 +319,13 @@ WantedBy=multi-user.target
 
 ## Grafana로 대시보드 구성하기
 ### 대시보드를 구성
-> [매뉴얼](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/) 참고
+> [매뉴얼 참고](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/) 
 1. Datasource 추가하기
 2. Create Dashboard
 3. Create Panel in Dashboard
 
 ### Alert 수신 
-> [매뉴얼](https://grafana.com/docs/grafana/latest/alerting/) 참고
+> [매뉴얼 참고](https://grafana.com/docs/grafana/latest/alerting/) 
 1. Create contact point
 2. Create policy
 3. Create alert rule (from panel)

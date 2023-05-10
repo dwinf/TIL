@@ -27,7 +27,8 @@ commodity server : 누구나 쓸 수 있을만큼 값싼 장비
 ## Hadoop 생태계
 hadoop1 : mr(RM + data processing) + hdfs
 hadoop2 : mr + **yarn**(RM) + hdfs
-![](https://t1.daumcdn.net/cfile/tistory/99834E3F5B489C1A05)
+![](https://user-images.githubusercontent.com/73389275/231315460-b4020669-61e8-4ab2-ab11-d85dfd58819e.png)
+
 hadoop3
 ![](https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png)
 이 외에도 너무 많은 에코들이 만들어짐
@@ -109,7 +110,7 @@ Block 크기를 적당한 수준(64MB, 128MB) 으로 고정해서 얻을 수 있
 
 ### 2.3.1 Overview
 
-![HDFS 공홈 아키텍처](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5d3d5451-b133-4b0e-b0ac-41a6b64fc2f8/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231320994-8f92394c-2da8-4c2b-b56a-88c7bca26eeb.png)
 
 ### 2.3.2 Name node
 
@@ -175,7 +176,7 @@ replica 의 위치는 HDFS의 신뢰성(reliability)과 성능(performance)에 �
 
 ### 2.4.3 Rack-Awareness
 
-![https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/hadoop-cluster.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6468e3d-85be-456d-8aa9-7f89bc1771b7/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321052-9c3f75c1-1309-4341-8409-371eed3faa79.png)
 
 [](https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/hadoop-cluster.jpg)[https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/hadoop-cluster.jpg](https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/hadoop-cluster.jpg)
 
@@ -187,7 +188,7 @@ replica 를 위치시는 가장 간단한 정책은, 하나의 replica 는 uniqu
 
 ### 2.4.4 Block Placement Policy Default
 
-![https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/HDFS-rack-awareness.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b2c3b3b3-1bee-4918-8b72-1525bb6e0f45/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321131-5d9a3edd-9bde-4903-a9b7-dfc8dafa8b93.png)
 
 [](https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/HDFS-rack-awareness.jpg)[https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/HDFS-rack-awareness.jpg](https://data-flair.training/blogs/wp-content/uploads/sites/2/2020/02/HDFS-rack-awareness.jpg)
 
@@ -246,8 +247,7 @@ Datanode 로부터 받은 blockreport 의 내용을 종합해서 모든 블럭�
 
 ### 2.5.1 Read Process
 
-![https://bigdatapath.files.wordpress.com/2018/05/11.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/163b9694-b872-4056-b814-5c8011bd1301/Untitled.png)
-
+![image](https://user-images.githubusercontent.com/73389275/231321172-538e20c8-488b-4587-a25e-792c73f95d06.png)
 [](https://bigdatapath.files.wordpress.com/2018/05/11.png)[https://bigdatapath.files.wordpress.com/2018/05/11.png](https://bigdatapath.files.wordpress.com/2018/05/11.png)
 
 1.  클라이언트가 DistributedFileSystem object의 open() 메소드로 HDFS 파일을 읽겠다는 요청을 시작한다.
@@ -275,8 +275,7 @@ Datanode 로부터 받은 blockreport 의 내용을 종합해서 모든 블럭�
 
 ### 2.5.2 Write Process
 
-![https://bigdatapath.files.wordpress.com/2018/05/2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/75ce2bb7-354a-4d45-9ac6-e1c0068e7eec/Untitled.png)
-
+![image](https://user-images.githubusercontent.com/73389275/231321200-15b14cca-c65d-4b9e-abc6-8dba61a8dea5.png)
 [](https://bigdatapath.files.wordpress.com/2018/05/2.png)[https://bigdatapath.files.wordpress.com/2018/05/2.png](https://bigdatapath.files.wordpress.com/2018/05/2.png)
 
 1.  새로운 파일 생성은 클라이언트가 DistributedFileSystem object 에서 create() 메소드 호출로 시작한다.
@@ -300,7 +299,7 @@ Hadoop v1.x 버전 까지는 namenode 는 SPOF(single point of failure)였다. H
 
 ## 3.2 HDFS HA Architecture
 
-![https://www.edureka.co/blog/wp-content/uploads/2015/06/HDFS-HA-Architecture-Edureka.png](https://www.edureka.co/blog/wp-content/uploads/2015/06/HDFS-HA-Architecture-Edureka.png)
+![image](https://user-images.githubusercontent.com/73389275/231321245-e1bcf4a9-ddd0-4701-82d5-01d741227786.png)
 
 ### 3.2.1 HA Architecture 기본 구성요소
 
@@ -322,7 +321,7 @@ Active Standby namenode 설정을 하는 방법으로 두 가지의 선택지가
 
 ## 3.3 Quorum Journal Nodes를 이용한 HA Architecture
 
-![https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2015/06/JournalNode-HDFS-HA-Architecture-Edureka.png](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2015/06/JournalNode-HDFS-HA-Architecture-Edureka.png)
+![image](https://user-images.githubusercontent.com/73389275/231321278-5f3850a2-6a1e-4d6e-82b5-a910f4b105a8.png)
 
 ### 3.3.1 Sync mechanism on HA Architecture using Quorum Journal Nodes
 
@@ -344,7 +343,7 @@ Quorum Journal Nodes를 이용한 Architecture에서 Split-brain을 방지하기
 
 ## 3.4 Shared Storage를 이용한 HA Architecture
 
-![https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2015/06/Shared-Storage-HDFS-HA-Architecture-Edureka.png](https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2015/06/Shared-Storage-HDFS-HA-Architecture-Edureka.png)
+![image](https://user-images.githubusercontent.com/73389275/231321305-cf2aa2ec-a6d1-4140-bc0f-3d90eee8c415.png)
 
 ### 3.4.1 Sync mechanism on HA Architecture using Shared Storage
 
@@ -375,9 +374,9 @@ Failover 에는 다음 두가지 방식이 있다.
 
 zookeeper 를 이용해서 automatic failover 가 이루어지는 과정을 알아보자.
 
-![https://data-flair.training/](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1283aa04-3b8c-41c0-94b9-cae12ca9a50c/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321346-a1575b8b-d4e3-453b-aa23-34fcb0985328.png)
 
-[](https://data-flair.training/)[https://data-flair.training/](https://data-flair.training/)
+[https://data-flair.training/](https://data-flair.training/)
 
 HDFS HA cluster 에서는 automatic failover 가 가능하게 하기 위해 Apache Zookeeper 를 사용한다. zookeeper 는 적은 양의 coordination data 를 유지하고, zookeeper 의 client 들에게 데이터의 변경을 알리고, failure 감지를 위해 client 들을 모니터링 한다. Zookeeper 는 namenode 에 session을 유지하고 있다. 만약 failure 가 발생하면 zookeeper 에 연결된 client session이 만료될 것이고 이때 zookeeper 는 다른 namenode 들에게 failover process가 시작되었음을 알린다. Active namenode 의 failure 가 발생하면 다른 standby(passive) namenode는 active namenode가 되기 위해 zookeeper 에 유지되고 있던 state 에 lock을 건다.
 
@@ -386,10 +385,7 @@ ZookeerFailoverController (ZKFC) 는 namenode의 상태 모니터링을 하는 z
 각 namenode는 ZKFC를 자신의 노드에 띄우고, ZKFC가 namenode를 주기적으로 health check 를 하도록 해야한다.
 
 ## 3.6 Observer Name Node (ONN) 으로 부하 분산하기
-
-<aside> ℹ️ ONN은 Hadoop 3.x 버전부터 사용할 수 있다.
-
-</aside>
+>ONN은 Hadoop 3.x 버전부터 사용할 수 있다.
 
 ### 3.6.1 Observer Name Node 의 필요성
 
@@ -465,21 +461,24 @@ Hadoop Cluster 은 위처럼 소프트웨어로 유실을 방지할 수 있다. 
 
 단, RAID 구성을 위해서는 추가적인 데이터 공간이 필요하고, 저장 과정이나 복구 과정에서 자원을 더 소모하므로 비용이 높아진다.
 
+*실제로 하둡에 적용했을 때의 이득은 거의 없음. **3copy / rack awareness**를 적용하고 있어서 하드웨어적인 방식이 크게  유효하지 않을 것 같음*
+*하지만 **NN**의 경우에는 **메타데이터의 손상을 방지**하고 가용성을 올려주는 등의 효과가 있어서 권장하긴 함(NN은 소중하니까...!)*
+
 ## 4.2 RAID
 
 ### 4.2.1 RAID란?
 
 RAID는 Redundant Array of Inexpensive Disks의 약자이다.
 
-RAID는 하드 디스크를 여러개의 독립적인 드라이브의 배열로 가상화 하는 방식이다. 이 방식을 통해서 performance, capacity, reliability 를 개선할 수 있다.
+RAID는 **하드 디스크를 여러개의 독립적인 드라이브의 배열로 가상화** 하는 방식이다. 이 방식을 통해서 performance, capacity, reliability 를 개선할 수 있다.
 
 RAID는 이 기능을 위해 만들어진 컨트롤러인 RAID 하드웨어 컨트롤러를 사용하는 방식과, 운영체제 수준에서 소프트웨어 드라이브로 구현하는 방식 두 가지가 있다.
 
 ### 4.2.2 RAID 0
 
-![https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c66d7aca-f89e-48ea-ba6d-a8ed030fdebf/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321383-b32f8fd7-0ecf-4668-a570-ade333a84bbf.png)
 
-[](https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp)[https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp)
+[https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid0-1.jpg.webp)
 
 RAID 0 은 데이터를 블록단위로 나누어서 전체 데이터 영역에 array로 분포하도록 나누는 방식이다. 드라이브의 수 만큼 동시에 read/write 가 가능하므로 속도가 빠르다. storage 의 용량을 모두 사용할 수 있고, 오버헤드 또한 없다.
 
@@ -487,9 +486,9 @@ RAID 0의 단점은 dedundant 하지 않다는 것이다. 하나의 드라이브
 
 ### 4.2.3 RAID 1
 
-![https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d530ab86-b81e-4cc6-95ce-3f1bf29e34e4/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321429-5fb5233a-e7f4-4f62-9b5b-d719d1ec37ab.png)
 
-[](https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp)[https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp)
+[https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid1-1.jpg.webp)
 
 RAID 1은 같은 데이터에 대해서 최소한 두개의 드라이브를 사용하는 방식이다. 하나의 드라이브가 고장나도라도, 다른 하나로 인해 유실을 방지하고 지속적인 읽기 쓰기가 가능하다. RAID 1 은 두 개의 드라이브 중 어디서든 가까운 위치에서 읽으면 되므로 read의 성능 또한 좋다.
 
@@ -501,217 +500,41 @@ Computer Science 에서 활용되는 Parity bit 는 1개의 bit 를 추가해서
 
 다음은 parity bit의 역할이 even parity bit 인 경우, odd parity bit 인 경우에 추가되는 8번째 자리의 bit의 사례이다.
 
-7 bits of data
-
-(count of 1-bits)
-
-8 bits including parity(even)
-
-8 bits including parity(odd)
-
-0000000
-
-0
-
-00000000
-
-00000001
-
-1010001
-
-3
-
-10100011
-
-10100010
-
-1101001
-
-4
-
-11010010
-
-11010011
-
-1111111
-
-7
-
-11111111
-
-11111110
+|7 bits of data|(count of 1-bits)|8 bits including parity(even)|8 bits including parity(odd)|
+|---|---|---|---|
+|0000000|0|0000000**0**|0000000**1**|
+|1010001|3|1010001**1**|1010001**0**|
+|1101001|4|1101001**0**|1101001**1**|
+|1111111|7|1111111**1**|1111111**0**|
 
 RAID에서 parity block 는 유실된 하나의 블록들의 데이터와 특별한 연산을 통해서 복구할 수 있는 bit로 구성된 블록을 의미한다.
-
+****
 아래 예제는 parity 연산이 xor 이고, 연산 결과가 0인 경우의 예이다.
 
 예제 - 정상 상태
-
-DISK 1
-
-DISK 2
-
-DISK 3
-
-DISK 4
-
-DISK 5
-
-A block
-
-0
-
-0
-
-0
-
-0
-
-Parity
-
-0 ⊕ 0 ⊕ 0 ⊕ 0= 0
-
-B block
-
-0
-
-1
-
-0
-
-Parity
-
-0 ⊕ 1 ⊕ 0 ⊕ 1= 0
-
-1
-
-C block
-
-0
-
-1
-
-Parity
-
-0 ⊕ 1 ⊕ 1 ⊕ 0= 0
-
-1
-
-0
-
-D block
-
-1
-
-Parity
-
-1 ⊕ 0 ⊕ 0 ⊕ 1= 0
-
-0
-
-0
-
-1
-
-E block
-
-Parity
-
-1 ⊕ 0 ⊕ 0 ⊕ 0= 1
-
-1
-
-0
-
-0
-
-0
+| |DISK 1|DISK 2|DISK 3|DISK 4|DISK 5|
+|---|---|---|---|---|---|
+|A block|0|0|0|0|Parity<br>0 ⊕ 0 ⊕ 0 ⊕ 0= 0|
+|B block|0|1|0|Parity<br>0 ⊕ 1 ⊕ 0 ⊕ 1= 0|1|
+|C block|0|1|Parity<br>0 ⊕ 1 ⊕ 1 ⊕ 0= 0|1|0|
+|D block|1|Parity<br>1 ⊕ 0 ⊕ 0 ⊕ 1= 0|0|0|1|
+|E block|Parity<br>1 ⊕ 0 ⊕ 0 ⊕ 0= 1|1|0|0|0|
 
 DISK 3의 Failure 발생
 
-DISK 1
-
-DISK 2
-
-DISK 3
-
-DISK 4
-
-DISK 5
-
-A block
-
-0
-
-0
-
-Failure
-
-0
-
-Parity
-
-0 ⊕ 0 ⊕ 0 ⊕ 0= 0
-
-B block
-
-0
-
-1
-
-Failure
-
-Parity
-
-0 ⊕ 1 ⊕ 0 ⊕ 1= 0
-
-1
-
-C block
-
-0
-
-1
-
-Parity Failure
-
-1
-
-0
-
-D block
-
-1
-
-Parity
-
-1 ⊕ 0 ⊕ 0 ⊕ 1= 0
-
-Failure
-
-0
-
-1
-
-E block
-
-Parity
-
-1 ⊕ 0 ⊕ 1 ⊕ 0= 1
-
-1
-
-Failure
-
-0
-
-0
+|  | DISK 1 | DISK 2 | DISK 3 | DISK 4 | DISK 5 |
+| --- | --- | --- | --- | --- | --- |
+| A block | 0 | 0 | Failure | 0 | Parity<br>0 ⊕ 0 ⊕ 0 ⊕ 0= 0 |
+| B block | 0 | 1 | Failure | Parity<br>0 ⊕ 1 ⊕ 0 ⊕ 1= 0 | 1 |
+| C block | 0 | 1 | Parity Failure | 1 | 0 |
+| D block | 1 | Parity<br>1 ⊕ 0 ⊕ 0 ⊕ 1= 0 | Failure | 0 | 1 |
+| E block | Parity<br>1 ⊕ 0 ⊕ 1 ⊕ 0= 1 | 1 | Failure | 0 | 0 |
 
 각 블록에 대해 장애가 나지 않은 디스크에 있는 블록들을 모두 xor 연산을 하면 DISK 4의 원본 bit를 복구할 수 있습니다.
 
 ### 4.2.5 RAID 5
 
-![https://www.dataplugs.com/wp-content/uploads/2018/08/raid5-1.jpg.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/feba2ea1-b086-45bc-82de-535b830972df/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321472-92ea657e-da35-49bf-bba2-0933ee5d6567.png)
 
 [](https://www.dataplugs.com/wp-content/uploads/2018/08/raid5-1.jpg.webp)[https://www.dataplugs.com/wp-content/uploads/2018/08/raid5-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid5-1.jpg.webp)
 
@@ -731,9 +554,9 @@ RAID 5 는 전체 디스크 용량의 33%(num of drive = 3) 이하에 대항하�
 
 ### 4.2.6 RAID 6
 
-![https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a82c4128-ac54-4524-b4fd-a93aadfeb781/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321579-1e400150-afb9-48b5-87d7-1cc7ee94535e.png)
 
-[](https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp)[https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp)
+[https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid6-1.jpg.webp)
 
 RAID 6는 RAID5와 유사하지만, parity 가 두개의 드라이브에 나누어 쓰여진다. 또한 parity 연산이 XOR이 아니라 [Reed-Solomon](https://www.notion.so/P08-C01-Hadoop-a9ed5e217adc464e9e9cac25caf07c23) 부호로 패리티를 생성한다. 따라서 최소한 4개의 드라이브로 구성해야하고, 동시에 두개의 드라이브의 장애에 대해 복구할 수 있다. read 는 RAID 5 정도로 빠르지만, parity block 이 하나 더 추가되기 때문에 write 는 RAID 5보다 느리다.
 
@@ -741,9 +564,9 @@ RAID 6는 read 위주의 transaction 이 필요한 웹서버에 적합하다. wr
 
 ### 4.2.7 RAID 10
 
-![https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70a2d6cd-3a69-4a63-bc05-706440747a3f/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231321525-47bcab55-ccd1-4cb6-961c-25b73e4cf461.png)
 
-[](https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp)[https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp)
+[https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp](https://www.dataplugs.com/wp-content/uploads/2018/08/raid10-1.jpg.webp)
 
 RAID 10 은 RAID 0 과 RAID 1 의 장점을 하나로 합친 시스템이다. 모든 데이터 블록에 대해서 복제본을 다른 드라이브에 유지하면서도, 전체 데이터 블록 array를 서로 두 개 의 드라이브에 나누어 분배하는 방식이다. 최소한 4개의 드라이브가 필요하다.
 
@@ -753,89 +576,14 @@ capacity 는 RAID 1과 동일하게 50%이다. RADI 5, 6에 비해 비싼 방법
 
 ### 4.2.8 정리
 
-Features
-
-RAID 0
-
-RAID 1
-
-RAID 5
-
-RAID 6
-
-RAID 10
-
-Minimum number of drives
-
-2
-
-2
-
-3
-
-4
-
-4
-
-Fault tolerance
-
-None
-
-Single-drive failure
-
-Single-drive failure
-
-Two-drive failure
-
-Up to one disk failure in each sub-array
-
-Read performance
-
-High
-
-Medium
-
-Low
-
-Low
-
-High
-
-Write Performance
-
-High
-
-Medium
-
-Low
-
-Low
-
-Medium
-
-Capacity utilization
-
-100%
-
-50%
-
-67% – 94%
-
-50% – 88%
-
-50%
-
-Typical applications
-
-High end workstations, data logging, real-time rendering, very transitory data
-
-Operating systems, transaction databases
-
-Data warehousing, web serving, archiving
-
-Data archive, backup to disk, high availability solutions, servers with large capacity requirements
-
-Fast databases, file servers, application servers
+| Features | RAID 0 | RAID 1 | RAID 5 | RAID 6 | RAID 10 |
+| --- | --- | --- | --- | --- | --- |
+| Minimum number of drives | 2 | 2 | 3 | 4 | 4 |
+| Fault tolerance | None | Single-drive failure | Single-drive failure | Two-drive failure | Up to one disk failure in each sub-array |
+| Read performance | High | Medium | Low | Low | High |
+| Write Performance | High | Medium | Low | Low | Medium |
+| Capacity utilization | 100% | 50% | 67% – 94% | 50% – 88% | 50% |
+| Typical applications | High end workstations, data logging, real-time rendering, very transitory data | Operating systems, transaction databases | Data warehousing, web serving, archiving | Data archive, backup to disk, high availability solutions, servers with large capacity requirements | Fast databases, file servers, application servers |
 
 ### 4.2.9 어떤 RAID를 쓰나요?
 
@@ -871,13 +619,13 @@ n개의 블록 조각을 연산을 통해 k개의 패리티를 생성한다. 이
 -   K: 몇개의 parity 로 구성할지
 -   RS(N,K) 로 표현함.
 
-![http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3ec54dc2-2636-4817-b13f-504a8ac62a3d/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378337-87a0533c-9b20-4a2b-aada-38a7d83c5ee9.png)
 
-[](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png)[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png)
+[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/2.png)
 
-![https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc301680-10e5-4c4c-8122-eadd31c80fa4/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378402-67e23d69-0fd4-4f27-b282-9f0e0c1e1136.png)
 
-[](https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png)[https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png](https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png)
+[https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png](https://clouderablog.wpenginepowered.com/wp-content/uploads/2019/08/hdfs-erasure-f31.png)
 
 위 그림은 EC가 적용되기 전의 Hadoop의 block을 기반으로 parity 를 구성하는 것과, stripping 후에 parity를 구성한 것의 차이를 나타내는 그림이다. Hadoop 의 논리적인 하나의 블록 사이즈는 여전히 동일하다.
 
@@ -891,15 +639,15 @@ striped block 은 논리적 블록을 더 작은 단위인 셀(cell)로 쪼갠�
 
 Eraser Coding 을 통해서 데이터의 복구 가능성은 높이면서 Storage 의 capacity loss 를 줄일 수 있다. N과 K를 어떻게 설정하느냐에 따라 그 효율은 달라지지만, 최소한 기존에 3개 replica 로 최소한 2배 이상의 storage 를 추가로 사용하는 것보다는 모든 경우에 좋다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c1b692a-0691-410b-a354-3dc1b7fa8cd7/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378477-a91d29b4-8577-4f16-9c9a-9af8e80fb797.png)
 
 또한 striped block 을 통해서 논리적인 블록 1개에 대한 병렬성이 높아지므로, read performance 는 오히려 기존보다 증가했다.
 
-![http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f3228463-62b7-4a29-b125-e50c642494a5/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378523-e9900deb-ffe3-4d55-8293-f8aa869bab49.png)
 
-[](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png)[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png)
+[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/8.png)
 
--   성능 지표 참고자료 : [](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)[https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)
+-   성능 지표 참고자료 : [https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)
 
 ### 4.3.4 Eraser Coding 단점
 
@@ -907,11 +655,11 @@ RAID 에서 살펴본 것과 마찬가지로, Eraser Coding 은 단순 복사에
 
 다만, intel 이 제공하는 ISA-L encoder library 덕분에 이 단점이 어느정도 상쇄될 수 있었다. (약 30% 감소)
 
-![http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1958fb3d-3fd0-4a87-b4f5-6a28c5386570/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378712-688cb3d6-8f59-4a36-975b-02cc5bc252a1.png)
 
-[](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png)[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png)
+[http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png](http://db-blog-multimedia.web.cern.ch/db-blog-multimedia/ekleszcz/erasure-coding-hdp3/7.png)
 
--   성능 지표 참고자료 : [](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)[https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)
+-   성능 지표 참고자료 : [https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3](https://db-blog.web.cern.ch/blog/emil-kleszcz/2019-10-evaluation-erasure-coding-hadoop-3)
 
 # 5 Fair Call Queue
 
@@ -923,15 +671,15 @@ Fair Call Queue 가 도입되기 전에 Hadoop Node 에서 client 의 요청은 
 
 Client로 부터 요청이 오면 reader thread 는 단일 FIFO Queue 에 요청을 담고, Handler 가 처리할 작업이 없다면 FIFO에서 하나씩 요청을 꺼내서 처리하는 방식이었다.
 
-![https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2878fde6-3466-4529-b590-0e357faadb03/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378815-7aae873b-8e0c-46c3-814f-112c8f230d2c.png)
 
-[](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png)[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png)
+[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwxNzZd/fifo_call_queue.png)
 
 단순 FIFO Queue 를 이용해서 Client 의 요청을 처리하는 방식은 heavy user 로 인해 빈번하게 Hadoop Node 의 응답을 느리게 만들었다. 특히 namenode 의 경우 단일 서버에서 모든 요청을 처리하기 때문에, 병목이나 부하에 민감한데, 수 ms 에서 수백 ms 까지도 응답이 느려지는 일이 잦았다. 기존에는 이런 작업들을 강제 종료시키는 방법으로 처리했다. 하지만 이런 방식은 생산적이지도 않을 뿐더러, 이미 처리된 작업에 대해서 이러한 작업을 수행할 때 오류 등이 발생해서 cluster 동작을 수시간 이용 못하는 경우 까지도 생겼다.
 
-![https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b95a1d7d-9450-4396-8c29-2bc6218fc65c/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378858-69144b30-ad6a-4a9c-92e7-026717c6c567.png)
 
-[](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png)[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png)
+[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyMTld/heavy_users.png)
 
 위 자료는 각 유저별로 요청을 다른 색으로 표현한 것이다. 이러한 문제는 소수의 유저의 high load operation 에 의해서 발생하는 경우가 많았다. 그리고 이런 작업은 종종 유저의 잘못된 MapReduce 작업에 의해 발생했다.
 
@@ -941,7 +689,7 @@ Client로 부터 요청이 오면 reader thread 는 단일 FIFO Queue 에 요청
 
 라우터에서 사용하는 QoS(Quality of service) capabilities의 기능에서 영감을 받아 FIFO Queue 를 Fair Call Queue 로 교체했다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/804cc885-49cd-4fec-b027-937f931c7b13/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231378950-bfaf65e7-0e9a-4260-b6de-5d3f545e560d.png)
 
 ### 5.2.1 Fair Call Queue 구성요소
 
@@ -953,7 +701,7 @@ RPC 요청이 Listen Queue에 도착하면 여러개의 Reader thread 가 요청
 
 Fair Call Queue에 있는 RPC Scheduler 는 구현체를 선택할 수 있도록 pluggable 하게 만들어져있다. default RPC Scheduler 는 **DecayRpcScheduler** 이다.
 
-### 5.2.3 **DecayRpcScheduler**
+### 5.2.3 DecayRpcScheduler
 
 DecayRpcScheduler는 각 user 별로 request 의 수(count)를 기억하고 있다. 이 count 는 시간이 지날수록 decay(부패) 정도를 고려한다. sweep period 마다 유저별 priority를 계산한다.
 
@@ -1006,7 +754,7 @@ backoff는 요청을 처리하기보다 client 에게 exception을 throw 하는 
 
 ### 5.2.8 설정 방식
 
-[매뉴얼](https://hadoop.apache.org/docs/r3.3.3/hadoop-project-dist/hadoop-common/FairCallQueue.html#Cost-based_Fair_Call_Queue) 의 #Configuration 항목에서 어떻게 설정하는지 확인이 가능하다.
+[매뉴얼](https://hadoop.apache.org/docs/r3.3.3/hadoop-project-dist/hadoop-common/FairCallQueue.html#Cost-based_Fair_Call_Queue) 의 \#Configuration 항목에서 어떻게 설정하는지 확인이 가능하다.
 
 -   core-default.xml 에 설정한다.
 
@@ -1014,11 +762,11 @@ backoff는 요청을 처리하기보다 client 에게 exception을 throw 하는 
 
 테스트 결과 DoS 공격에 대해서 일정 수준 이하의 낮은 latency를 보장할 수 있었다.
 
-![https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/41c17d5b-9a07-4f53-b741-7c648fdca437/Untitled.png)
+![image](https://user-images.githubusercontent.com/73389275/231379026-857a4c6e-f79f-4efc-aa77-4323c6a8dd04.png)
 
-[](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png)[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png)
+[https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png](https://tech.ebayinc.com/assets/Uploads/Blog/2014/08/_resampled/ResizedImageWzYyMCwyNDVd/latency_comparison.png)
 
--   참고: [](https://tech.ebayinc.com/engineering/quality-of-service-in-hadoop/)[https://tech.ebayinc.com/engineering/quality-of-service-in-hadoop/](https://tech.ebayinc.com/engineering/quality-of-service-in-hadoop/)
+-   참고: [https://tech.ebayinc.com/engineering/quality-of-service-in-hadoop/](https://tech.ebayinc.com/engineering/quality-of-service-in-hadoop/)
 
 ## 5.4 Cost based Fair Call Queue
 
@@ -1047,3 +795,45 @@ Fair Call Queue 자체만으로도 헤비 유저에 대한 영향을 줄이는�
 cost based Fair Call Queue 를 활성화 하기 위해서는 다음 설정을 해야한다.
 
 -   `costprovder.impl` = `org.apache.hadoop.ipc.WeightedTimeCostProvider`
+
+---
+---
+---
+
+# Hadoop in AWS
+> 2챕터의 강의는 aws 매뉴얼을 번역한 것. 실제로 설치할 때는 공식 도큐먼트 확인
+
+## 노드 유형
+### 1. Primary
+마스터 노드 또는 네임노드.
+
+### 2, 코어 노드
+마스터 노드에서 관리하는 데이터 노드.
+실제로 데이터가 저장
+
+### 3. 테스크 노드
+클라우드 환경이기에 구성가능한 노드. 일반적인 하둡에는 없음
+하둡의 일부로서의 동작보다는 단순 연산을 보조하기 위한 노드에 가까움
+
+
+# 고가용성 클러스터에 대한 제약사항
+이사람 설명을 너무 대충하면서 다 넘어간다..
+
+## hdfs
+두 개 이상의 개별노드. 네임노드는 1개만 active, 나머지는 standby여야 함
+
+## yarn rm
+`yarrn rmadmin -getAllServiceState` 를 통해 노드의 active/standby 상태 확인
+
+hive, hue, oozie, prestoDB 등의 경우 고가용성을 위해서는 전용 외부 메타db가 필요함
+
+hdfs 커맨드는 마스터 노드에서만 실행(A/S 상태 무관)
+
+**자동 종료 방지** AWS는 과금이 되는 서비스이기 때문에 다양한 조건을 통해 자동으로 종료되도록 가능
+하지만 HA를 사용할 경우 이 기능이 자동으로 비활성화되기 때문에 별도의 설정을 통해 자동 종료를 활성화할 수 있음
+
+이 외에는 강의자료 및 매뉴얼 참고
+
+# 클러스터 인스턴스 구성 지침
+
+
